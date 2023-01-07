@@ -1,0 +1,96 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eisenhower-server
+  labels:
+    app: eisenhower-server
+spec:
+  selector:
+    matchLabels:
+      app: eisenhower-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: eisenhower-server
+    spec:
+      containers:
+        - name: eisenhower-server
+          image: rg.fr-par.scw.cloud/achampion/eisenhower-server:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+              name: http
+          env:
+            - name: MALLOC_ARENA_MAX
+              value: "1"
+            - name: JAVA_OPTS
+              value: >-
+                -XX:MaxRAM=150M
+                -Xmx64m
+                -Xss512k
+                -XX:+UseSerialGC
+            - name: JDBC_URL
+              valueFrom:
+                secretKeyRef:
+                  name: eisenhower
+                  key: jdbcUrl
+            - name: DATABASE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: eisenhower
+                  key: databaseUser
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: eisenhower
+                  key: databasePassword
+            - name: JWT_SIGNING_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: eisenhower
+                  key: jwtSigningKey
+      imagePullSecrets:
+        - name: scaleway-cr
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: eisenhower-server
+spec:
+  ports:
+    - port: 80
+      name: http
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: eisenhower-server
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/add-base-url: "true"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: 30s
+    nginx.ingress.kubernetes.io/proxy-read-timeout: 600s
+    nginx.ingress.kubernetes.io/proxy-send-timeout: 600s
+    nginx.ingress.kubernetes.io/proxy-body-size: "32m"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  name: eisenhower-server
+  labels:
+    app: eisenhower-server
+spec:
+  rules:
+    - host: eisenhowermatrix.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: eisenhower-server
+                port:
+                  number: 80

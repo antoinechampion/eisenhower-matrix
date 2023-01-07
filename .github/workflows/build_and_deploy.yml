@@ -1,0 +1,41 @@
+name: Build and Deploy Eisenhower server
+on:
+  workflow_dispatch:
+
+jobs:
+  containerization:
+    name: Containerizing Website
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Login to Container Registry
+        uses: docker/login-action@v1
+        with:
+          username: nologin
+          password: ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
+          registry: rg.fr-par.scw.cloud/achampion
+      - name: Build, test, containerize
+        run: |
+          echo "$APPLICATION_PROPERTIES" >> src/main/resources/application.properties
+          mvn package
+        env:
+          APPLICATION_PROPERTIES: ${{ secrets.APPLICATION_PROPERTIES }}
+      - name: Push image to container registry
+        run: docker push rg.fr-par.scw.cloud/achampion/eisenhower-server:latest
+      - name: Deploy to Kubernetes
+        uses: danielr1996/kubectl-action@1.0.0
+        with:
+          kubeconfig: ${{ secrets.KUBE_CONFIG }}
+          args: |
+            apply -f k8s.yaml
+      - name: Roll out old pods
+        uses: danielr1996/kubectl-action@1.0.0
+        with:
+          kubeconfig: ${{ secrets.KUBE_CONFIG }}
+          args: |
+            rollout restart deploy eisenhower-server
+          

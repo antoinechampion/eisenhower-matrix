@@ -1,0 +1,26 @@
+{
+  "name": "eisenhower-js-tests",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "web-test-runner '**/*.test.html' --node-resolve",
+    "test:watch": "web-test-runner '**/*.test.html' --node-resolve --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antoinechampion/eisenhower-matrix.git"
+  },
+  "author": "Antoine Champion",
+  "license": "MIT",
+  "homepage": "https://github.com/antoinechampion/eisenhower-matrix#readme",
+  "devDependencies": {
+    "@esm-bundle/chai": "^4.3.4-fix.0",
+    "@open-wc/testing": "^3.1.7",
+    "@web/test-runner": "^0.15.0",
+    "@web/test-runner-mocha": "^0.7.5",
+    "sinon": "^15.0.1"
+  },
+  "dependencies": {
+    "@shoelace-style/shoelace": "^2.0.0-beta.87"
+  }
+}

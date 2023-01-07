@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Eisenhower Matrix Online - Priority matrix application</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+    <script type="module" src="webapp.js"></script>
+</head>
+<body>
+    <eisenhower-navigation-bar></eisenhower-navigation-bar>
+
+    <div class="container">
+        <p class="short-description">
+            &ldquo; The <a href="https://en.wikipedia.org/wiki/Time_management#The_Eisenhower_Method">Eisenhower Matrix</a> (or Priority Matrix) is a tool used to prioritize tasks based on their level of importance and urgency.
+            It consists of four quadrants and tasks are prioritized based on their placement in these quadrants. &rdquo;
+        </p>
+
+        <div class="demo-and-login">
+            <sl-card>
+                <video autoplay muted loop>
+                    <source src="images/demo.mp4" type="video/mp4" />
+                </video>
+            </sl-card>
+            <eisenhower-login-form>
+                <span slot="title">Create or log-in to your matrix</span>
+            </eisenhower-login-form>
+        </div>
+
+        <div style="display: grid;">
+            <sl-card style="margin: auto;">
+                    <ul style="list-style: none; padding-inline-end: 40px;">
+                        <li>📌 Create tasks and prioritize them on the board,</li>
+                        <li>📄 Attach documents to go in greater details about a task,</li>
+                        <li>⚙️ Standalone web app (not a third party plugin or template)</li>
+                        <li>📱 Mobile ready,</li>
+                        <li>👍🏻 <a href="https://github.com/antoinechampion/eisenhower-matrix">Free and open-source</a> project.</li>
+                    </ul>
+            </sl-card>
+        </div>
+    </div>
+
+</body>
+</html>

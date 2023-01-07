@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYZE_INJECTED_CODE" value="false" />
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="18b7bc88-7b86-4ad7-9188-b8601b5ba4ae" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/services/AttachedDocumentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/services/AttachedDocumentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/components/BackgroundCanvas.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/components/BackgroundCanvas.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/components/Editor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/components/Editor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/components/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/components/LoginForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/components/Matrix.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/components/Matrix.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/components/NavigationBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/components/NavigationBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/components/SyncStatus.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/components/SyncStatus.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/services/Api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/services/Api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/services/Palette.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/services/Palette.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/webapp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/webapp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/ach/eisenhower/AttachedDocumentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ach/eisenhower/AttachedDocumentTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+        <option name="userSettingsFile" value="$USER_HOME$/.m2/settings-no-proxy.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="workspaceImportEnabled" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2JMBJblXUVYTJDOYJoyjZGGLq5i" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.HTML&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;7b703a88d8c222fc7be42053e8d27916&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/webapp/services" />
+      <recent name="$PROJECT_DIR$/src/main/resources/webapp" />
+      <recent name="$PROJECT_DIR$/src/main/resources/webapp/components" />
+      <recent name="$PROJECT_DIR$/src/main/resources/webapp/images" />
+      <recent name="$PROJECT_DIR$/server/src/main/resources/static" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.ach.eisenhower" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean" />
+      <command value="mvn clean:clean" />
+      <command value="mvn clean install" />
+      <command value="mvn install" />
+      <command value="mvn package" />
+      <command value="mvn clean compile" />
+    </option>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.ServerApplication">
+    <configuration name="AttachedDocumentTest.testCreateTooLargeDocument" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="eisenhower" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ach.eisenhower.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ach.eisenhower" />
+      <option name="MAIN_CLASS_NAME" value="com.ach.eisenhower.AttachedDocumentTest" />
+      <option name="METHOD_NAME" value="testCreateTooLargeDocument" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AttachedDocumentTest.testGetAttachedDocument" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="eisenhower" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ach.eisenhower.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ach.eisenhower" />
+      <option name="MAIN_CLASS_NAME" value="com.ach.eisenhower.AttachedDocumentTest" />
+      <option name="METHOD_NAME" value="testGetAttachedDocument" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AttachedDocumentTest.testUpdateAttachedDocument" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="eisenhower" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ach.eisenhower.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ach.eisenhower" />
+      <option name="MAIN_CLASS_NAME" value="com.ach.eisenhower.AttachedDocumentTest" />
+      <option name="METHOD_NAME" value="testUpdateAttachedDocument" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserRestTest.testGetUserDetails" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="eisenhower" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ach.eisenhower.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ach.eisenhower" />
+      <option name="MAIN_CLASS_NAME" value="com.ach.eisenhower.UserRestTest" />
+      <option name="METHOD_NAME" value="testGetUserDetails" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="java in eisenhower" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="eisenhower" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test/java" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="ACTIVE_PROFILES" value="dev" />
+      <module name="eisenhower" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ach.eisenhower.ServerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.AttachedDocumentTest.testCreateTooLargeDocument" />
+        <item itemvalue="JUnit.UserRestTest.testGetUserDetails" />
+        <item itemvalue="JUnit.java in eisenhower" />
+        <item itemvalue="JUnit.AttachedDocumentTest.testUpdateAttachedDocument" />
+        <item itemvalue="JUnit.AttachedDocumentTest.testGetAttachedDocument" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="18b7bc88-7b86-4ad7-9188-b8601b5ba4ae" name="Changes" comment="" />
+      <created>1671878001719</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1671878001719</updated>
+      <workItem from="1671878003350" duration="7532000" />
+      <workItem from="1671897415142" duration="277000" />
+      <workItem from="1671897701137" duration="3589000" />
+      <workItem from="1671967833404" duration="3866000" />
+      <workItem from="1671986153622" duration="979000" />
+      <workItem from="1671987151563" duration="6558000" />
+      <workItem from="1671997989033" duration="734000" />
+      <workItem from="1672047071669" duration="15999000" />
+      <workItem from="1672089329440" duration="78000" />
+      <workItem from="1672089415658" duration="20000" />
+      <workItem from="1672089451078" duration="465000" />
+      <workItem from="1672090137982" duration="186000" />
+      <workItem from="1672090432278" duration="1953000" />
+      <workItem from="1672241965567" duration="19615000" />
+      <workItem from="1672323754215" duration="11874000" />
+      <workItem from="1672390463224" duration="11757000" />
+      <workItem from="1672437941319" duration="3143000" />
+      <workItem from="1672483187811" duration="2131000" />
+      <workItem from="1672490510911" duration="3016000" />
+      <workItem from="1672667674641" duration="8762000" />
+      <workItem from="1672676890074" duration="2829000" />
+      <workItem from="1672679909279" duration="37000" />
+      <workItem from="1672827968745" duration="9444000" />
+      <workItem from="1672937320511" duration="628000" />
+      <workItem from="1672937964025" duration="11064000" />
+      <workItem from="1672998331617" duration="6472000" />
+      <workItem from="1673023311620" duration="4066000" />
+      <workItem from="1673084183749" duration="3628000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

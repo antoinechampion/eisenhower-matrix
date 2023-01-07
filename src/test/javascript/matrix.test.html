@@ -1,0 +1,59 @@
+<html>
+
+<head>
+    <script type="module" src="webapp.testimports.js"></script>
+</head>
+
+<body>
+<script type="module">
+    import { stub } from 'sinon';
+    import {html, fixture, expect} from "@open-wc/testing";
+    import { fixtureCleanup } from '@open-wc/testing';
+
+    import { runTests } from '@web/test-runner-mocha';
+
+    import { Api } from "../../main/resources/webapp/services/Api";
+    import { Router } from "../../main/resources/webapp/services/Router";
+
+    runTests(async () => {
+
+        beforeEach(() => {
+            fixtureCleanup();
+            Api.boards.list = () => Promise.resolve(
+                [{"id":"28e6b0dc-f214-4a8b-9241-00c39480a716","title":"My personal board"}]
+            );
+        });
+
+        describe("Board", () => {
+            beforeEach(() => {
+                Api.notes.list = (boardId) => Promise.resolve(
+                    [{"id":"07765d19-9a76-4b2b-8922-b15a76a50000","text":"Note 1","urgency":0.1,"importance":0.1},
+                        {"id":"07765d19-9a76-4b2b-8922-b15a76a50001","text":"Note 2","urgency":0.4,"importance":0.8}]
+                );
+            });
+
+            it("displays notes", async () => {
+                Router.goToMatrix = stub();
+
+                /* Can't instantiate eisenhower-matrix as it can't access child component properties in runTests:
+                   Waiting for https://github.com/open-wc/open-wc/issues/2553
+
+                const el = await fixture(html`<eisenhower-matrix></eisenhower-matrix>`);
+                await new Promise((resolve) => {
+                    setTimeout(() => {
+                        const notes = el.querySelectorAll(".note");
+                        expect(notes.length).to.be.equals(2);
+                        expect(notes[0].value).to.be.equals("Note 1");
+                        expect(notes[0].getAttribute("data-id")).to.be.equals("07765d19-9a76-4b2b-8922-b15a76a50000");
+                        expect(notes[0].offsetLeft).to.be.equals(window.innerWidth * 0.1);
+                        resolve();
+                    }, 1000);
+                });
+                 */
+            });
+        });
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+@import url("global.css");
+
+.short-description {
+    margin-top: 32px;
+    font-size: var(--sl-font-size-large);
+    font-weight: 300;
+}
+
+.demo-and-login {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.demo-and-login > sl-card {
+    grid-area: 1 / 2 / 2 / 3;
+    max-width: fit-content;
+    margin: 25px auto auto;
+    --padding: 0;
+}
+
+.demo-and-login > sl-card > video {
+    max-width: 425px;
+    width: auto;
+}
+.demo-and-login > eisenhower-login-form {
+    margin: auto;
+    grid-area: 1 / 1 / 2 / 2;
+}

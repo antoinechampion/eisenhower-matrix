@@ -1,0 +1,66 @@
+<html>
+
+<head>
+    <script type="module" src="webapp.testimports.js"></script>
+</head>
+
+<body>
+<script type="module">
+    import sinon, { stub } from 'sinon';
+    import { html, fixture, waitUntil } from "@open-wc/testing";
+    import { fixtureCleanup } from '@open-wc/testing';
+
+    import { runTests } from '@web/test-runner-mocha';
+
+    import {Api} from "../../main/resources/webapp/services/Api";
+    import { Router } from "../../main/resources/webapp/services/Router";
+
+    runTests(async () => {
+
+        beforeEach(() => {
+            fixtureCleanup();
+        });
+
+        describe("LoginForm", () => {
+
+            it("Displays an alert for bad authentication", async () => {
+                Router.goToMatrix = stub();
+                Api.auth.login = (email, password) => Promise.resolve({ status: 401 });
+                Api.auth.register = (email, password) => Promise.resolve({ status: 409 });
+
+                const el = await fixture(html`<eisenhower-login-form></eisenhower-login-form>`);
+
+                for (let formName of ["registerForm", "loginForm"]) {
+                    const alert = el.shadowRoot.querySelector("sl-alert");
+                    alert.open = false;
+
+                    el.shadowRoot.querySelector(`form[name='${formName}'] > sl-input[name='email']`).value = "test@example.com";
+                    el.shadowRoot.querySelector(`form[name='${formName}'] > sl-input[name='password']`).value = "test";
+                    el.shadowRoot.querySelector(`form[name='${formName}'] > sl-button[type='submit']`).click();
+
+                    await waitUntil(() => alert.open);
+                }
+            });
+
+            it("Redirects to a matrix given correct authentication", async () => {
+                Router.goToMatrix = stub();
+                Api.auth.login = (email, password) => Promise.resolve({ "token": "dummy", "email": "test@example.com" });
+                Api.auth.register = (email, password) => Promise.resolve({ "token": "dummy", "email": "test@example.com" });
+
+                const el = await fixture(html`<eisenhower-login-form></eisenhower-login-form>`);
+
+                for (let formName of ["registerForm", "loginForm"]) {
+                    el.shadowRoot.querySelector(`form[name='${formName}'] > sl-input[name='email']`).value = "test@example.com";
+                    el.shadowRoot.querySelector(`form[name='${formName}'] > sl-input[name='password']`).value = "test";
+                    el.shadowRoot.querySelector(`form[name='${formName}'] > sl-button[type='submit']`).click();
+
+                    await waitUntil(() => Router.goToMatrix.callCount === 1);
+                    sinon.reset();
+                }
+            });
+        });
+    });
+</script>
+</body>
+
+</html>

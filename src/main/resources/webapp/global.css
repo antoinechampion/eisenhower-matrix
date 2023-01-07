@@ -1,0 +1,29 @@
+@import url("https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.87/dist/themes/light.css");
+
+html {
+    min-height: 100%;
+}
+
+body {
+    background-image: url("/images/grain.png");
+
+    font-family: var(--sl-font-sans);
+    font-size: var(--sl-font-size-medium);
+    font-weight: var(--sl-font-weight-normal);
+    letter-spacing: var(--sl-letter-spacing-normal);
+
+    margin:0;
+    padding:0;
+}
+
+a {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 2px;
+}
+
+.container {
+    width: 64em;
+    max-width: calc(100% - 4em);
+    margin: 0 auto;
+}
