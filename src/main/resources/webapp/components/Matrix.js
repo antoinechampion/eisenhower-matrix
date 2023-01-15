@@ -239,8 +239,8 @@ export class Matrix extends HTMLElement {
         noteDom.setAttribute("data-y", y.toString());
 
         noteDom.setAttribute("data-id", note.id);
-        noteDom.addEventListener("input propertychange", () => {
-            this.notesToSaveQueue.add(this);
+        noteDom.addEventListener("input", () => {
+            this.notesToSaveQueue.add(noteDom);
             this.updateSyncStatus();
         });
         noteDom.addEventListener("focus", () => {
