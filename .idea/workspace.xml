@@ -8,18 +8,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18b7bc88-7b86-4ad7-9188-b8601b5ba4ae" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/services/AttachedDocumentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/services/AttachedDocumentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/components/BackgroundCanvas.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/components/BackgroundCanvas.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/components/Editor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/components/Editor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/components/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/components/LoginForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/components/Matrix.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/components/Matrix.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/components/NavigationBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/components/NavigationBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/components/SyncStatus.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/components/SyncStatus.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/services/Api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/services/Api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/services/Palette.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/services/Palette.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/webapp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/webapp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/ach/eisenhower/AttachedDocumentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ach/eisenhower/AttachedDocumentTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,11 +40,6 @@
         <option name="userSettingsFile" value="$USER_HOME$/.m2/settings-no-proxy.xml" />
       </MavenGeneralSettings>
     </option>
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="workspaceImportEnabled" value="true" />
-      </MavenImportingSettings>
-    </option>
   </component>
   <component name="ProjectId" id="2JMBJblXUVYTJDOYJoyjZGGLq5i" />
   <component name="ProjectLevelVcsManager">
@@ -63,35 +49,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.HTML&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;7b703a88d8c222fc7be42053e8d27916&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  }
-}</component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\antoi\Documents\Prog\Java\eisenhower-matrix\src\main\resources" />
       <recent name="$PROJECT_DIR$/src/main/resources/webapp/services" />
       <recent name="$PROJECT_DIR$/src/main/resources/webapp" />
       <recent name="$PROJECT_DIR$/src/main/resources/webapp/components" />
       <recent name="$PROJECT_DIR$/src/main/resources/webapp/images" />
-      <recent name="$PROJECT_DIR$/server/src/main/resources/static" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.ach.eisenhower" />
@@ -187,10 +164,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <option name="ACTIVE_PROFILES" value="dev" />
-      <module name="eisenhower" />
+    <configuration name="ServerApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="eisenhower-matrix" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.ach.eisenhower.ServerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="eisenhower-matrix" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ach.eisenhower.ServerApplication" />
+      <option name="ACTIVE_PROFILES" value="dev" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -241,6 +227,9 @@
       <workItem from="1672998331617" duration="6472000" />
       <workItem from="1673023311620" duration="4066000" />
       <workItem from="1673084183749" duration="3628000" />
+      <workItem from="1673782695538" duration="573000" />
+      <workItem from="1673783323259" duration="7000" />
+      <workItem from="1674145303782" duration="1155000" />
     </task>
     <servers />
   </component>

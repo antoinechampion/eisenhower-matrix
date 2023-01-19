@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="eisenhower" />
+        <module name="eisenhower-matrix" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -20,6 +21,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="eisenhower" options="-parameters" />
+      <module name="eisenhower-matrix" options="-parameters" />
       <module name="server" options="-parameters" />
     </option>
   </component>

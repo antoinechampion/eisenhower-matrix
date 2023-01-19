@@ -26,10 +26,9 @@ template.innerHTML = `
         
         .note {
             position: absolute;
-            width: 20%;
-            max-width: 250px;
-            height: 10%;
-            max-height: 180px;
+            height: max(11%, 75px);
+            width: max(15%, 150px);
+            
             border-radius: 3px;
             border-width: 2px;
             padding: 6px 12px;
