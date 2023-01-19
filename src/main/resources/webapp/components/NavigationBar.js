@@ -36,8 +36,8 @@ template.innerHTML = `
     
     <nav>
         <div class="nav__item">
-            <h1>Eisenhower.cloud</h1>
-            <h2>Free eisenhower matrix editor</h2>
+            <h1>Eisenhower Matrix</h1>
+            <h2>Free priority matrix editor</h2>
         </div>
         <div class="nav__menu">
             <a class="nav__item" href="/">
