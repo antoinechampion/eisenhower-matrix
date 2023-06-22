@@ -9,8 +9,6 @@
   <component name="ChangeListManager">
     <list default="true" id="18b7bc88-7b86-4ad7-9188-b8601b5ba4ae" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/configuration/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/configuration/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/controllers/AttachedDocumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/controllers/AttachedDocumentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/services/AttachedDocumentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/services/AttachedDocumentService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,24 +48,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "add-document-sharing",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "spring.configuration.checksum": "7b703a88d8c222fc7be42053e8d27916",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;add-document-sharing&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;7b703a88d8c222fc7be42053e8d27916&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\antoi\Documents\Prog\Java\eisenhower-matrix\src\main\resources" />
@@ -97,7 +95,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ServerApplication">
+  <component name="RunManager" selected="JUnit.java in eisenhower">
     <configuration name="AttachedDocumentTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="eisenhower" />
       <extension name="coverage">
@@ -191,9 +189,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.java in eisenhower" />
         <item itemvalue="JUnit.AttachedDocumentTest.testCreateAttachedDocumentWithGuestAccess" />
         <item itemvalue="JUnit.AttachedDocumentTest" />
-        <item itemvalue="JUnit.java in eisenhower" />
         <item itemvalue="JUnit.AttachedDocumentTest.testCreateTooLargeDocument" />
         <item itemvalue="JUnit.UserRestTest.testGetUserDetails" />
       </list>
@@ -241,6 +239,7 @@
       <workItem from="1687426412649" duration="7596000" />
       <workItem from="1687440845986" duration="11000" />
       <workItem from="1687440980732" duration="175000" />
+      <workItem from="1687441337612" duration="46000" />
     </task>
     <servers />
   </component>

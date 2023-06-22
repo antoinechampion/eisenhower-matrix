@@ -58,7 +58,7 @@ public class AttachedDocumentService {
         document.setContent(content);
 
         var existingDoc = attachedDocumentRepository.findByNoteId(note.getId());
-        if (existingDoc.isSharingEnabled()) {
+        if (existingDoc != null && existingDoc.isSharingEnabled()) {
             document.setSharingEnabled(true);
         }
 
