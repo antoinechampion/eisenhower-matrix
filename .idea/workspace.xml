@@ -9,7 +9,9 @@
   <component name="ChangeListManager">
     <list default="true" id="18b7bc88-7b86-4ad7-9188-b8601b5ba4ae" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/configuration/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/configuration/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/controllers/AttachedDocumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/controllers/AttachedDocumentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/services/AttachedDocumentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/services/AttachedDocumentService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +23,8 @@
       <list>
         <option value="HTML File" />
         <option value="CSS File" />
-        <option value="JavaScript File" />
         <option value="Class" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -48,19 +50,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RequestMappingsPanelOrder0" value="0" />
-    <property name="RequestMappingsPanelOrder1" value="1" />
-    <property name="RequestMappingsPanelWidth0" value="75" />
-    <property name="RequestMappingsPanelWidth1" value="75" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "add-document-sharing",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "spring.configuration.checksum": "7b703a88d8c222fc7be42053e8d27916",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\antoi\Documents\Prog\Java\eisenhower-matrix\src\main\resources" />
@@ -91,6 +98,40 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.ServerApplication">
+    <configuration name="AttachedDocumentTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="eisenhower" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ach.eisenhower.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ach.eisenhower" />
+      <option name="MAIN_CLASS_NAME" value="com.ach.eisenhower.AttachedDocumentTest" />
+      <option name="METHOD_NAME" value="testCreateAttachedDocumentWithGuestAccess" />
+      <option name="TEST_OBJECT" value="class" />
+      <dir value="$PROJECT_DIR$/src/test/java" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AttachedDocumentTest.testCreateAttachedDocumentWithGuestAccess" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="eisenhower" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ach.eisenhower.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ach.eisenhower" />
+      <option name="MAIN_CLASS_NAME" value="com.ach.eisenhower.AttachedDocumentTest" />
+      <option name="METHOD_NAME" value="testCreateAttachedDocumentWithGuestAccess" />
+      <option name="TEST_OBJECT" value="method" />
+      <dir value="$PROJECT_DIR$/src/test/java" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AttachedDocumentTest.testCreateTooLargeDocument" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="eisenhower" />
       <extension name="coverage">
@@ -102,38 +143,6 @@
       <option name="PACKAGE_NAME" value="com.ach.eisenhower" />
       <option name="MAIN_CLASS_NAME" value="com.ach.eisenhower.AttachedDocumentTest" />
       <option name="METHOD_NAME" value="testCreateTooLargeDocument" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AttachedDocumentTest.testGetAttachedDocument" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="eisenhower" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ach.eisenhower.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.ach.eisenhower" />
-      <option name="MAIN_CLASS_NAME" value="com.ach.eisenhower.AttachedDocumentTest" />
-      <option name="METHOD_NAME" value="testGetAttachedDocument" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AttachedDocumentTest.testUpdateAttachedDocument" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="eisenhower" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ach.eisenhower.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.ach.eisenhower" />
-      <option name="MAIN_CLASS_NAME" value="com.ach.eisenhower.AttachedDocumentTest" />
-      <option name="METHOD_NAME" value="testUpdateAttachedDocument" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -171,22 +180,22 @@
       </method>
     </configuration>
     <configuration name="ServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="eisenhower-matrix" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ach.eisenhower.ServerApplication" />
       <option name="ACTIVE_PROFILES" value="dev" />
+      <option name="ALTERNATIVE_JRE_PATH" value="BUNDLED" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <module name="eisenhower" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ach.eisenhower.ServerApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AttachedDocumentTest.testCreateAttachedDocumentWithGuestAccess" />
+        <item itemvalue="JUnit.AttachedDocumentTest" />
+        <item itemvalue="JUnit.java in eisenhower" />
         <item itemvalue="JUnit.AttachedDocumentTest.testCreateTooLargeDocument" />
         <item itemvalue="JUnit.UserRestTest.testGetUserDetails" />
-        <item itemvalue="JUnit.java in eisenhower" />
-        <item itemvalue="JUnit.AttachedDocumentTest.testUpdateAttachedDocument" />
-        <item itemvalue="JUnit.AttachedDocumentTest.testGetAttachedDocument" />
       </list>
     </recent_temporary>
   </component>
@@ -229,6 +238,9 @@
       <workItem from="1673782695538" duration="573000" />
       <workItem from="1673783323259" duration="7000" />
       <workItem from="1674145303782" duration="7613000" />
+      <workItem from="1687426412649" duration="7596000" />
+      <workItem from="1687440845986" duration="11000" />
+      <workItem from="1687440980732" duration="175000" />
     </task>
     <servers />
   </component>

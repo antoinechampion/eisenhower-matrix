@@ -1,8 +1,10 @@
 package com.ach.eisenhower.controllers;
 
+import com.ach.eisenhower.entities.AttachedDocumentEntity;
 import com.ach.eisenhower.repositories.AttachedDocumentRepository;
 import com.ach.eisenhower.repositories.NoteRepository;
 import com.ach.eisenhower.services.AttachedDocumentService;
+import com.ach.eisenhower.services.EisenhowerServiceException;
 import com.ach.eisenhower.services.UserService;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
@@ -53,15 +55,38 @@ public class AttachedDocumentController {
      */
     @GetMapping("/{noteId}")
     public ResponseEntity<Resource> getAttachedDocument(@PathVariable String noteId) {
-        var userId = UserService.getContextUserIdOrThrow(SecurityContextHolder.getContext());
-        var doc = attachedDocumentService.getAttachedDocument(userId, UUID.fromString(noteId));
+        boolean isGuest;
+        var userId = UserService.getContextUserId(SecurityContextHolder.getContext());
+        AttachedDocumentEntity doc;
+
+        try {
+            doc = attachedDocumentService.getAttachedDocument(userId, UUID.fromString(noteId));
+            isGuest = false;
+        } catch (EisenhowerServiceException e) {
+            doc =  attachedDocumentService.getAttachedDocumentAsGuest(UUID.fromString(noteId));
+            isGuest = true;
+        }
 
         var resource = new ByteArrayResource(doc.getContent());
-        return ResponseEntity.ok()
+        var response = ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_OCTET_STREAM)
                 .contentLength(resource.contentLength())
                 .header(HttpHeaders.CONTENT_DISPOSITION,
-                        ContentDisposition.attachment().filename("file").build().toString())
-                .body(resource);
+                        ContentDisposition.attachment().filename("file").build().toString());
+
+        if (isGuest) {
+            response = response.header("X-Document-Guest", "true");
+        }
+
+        return response.body(resource);
+    }
+
+    /**
+     * Enables link sharing for an attached document
+     */
+    @PostMapping("/{noteId}/share")
+    public void enableSharing(@PathVariable String noteId) {
+        var userId = UserService.getContextUserIdOrThrow(SecurityContextHolder.getContext());
+        attachedDocumentService.enableSharing(userId, UUID.fromString(noteId));
     }
 }

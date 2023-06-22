@@ -1,13 +1,14 @@
-// TinyMCE requires global callbacks for event handling...
-window.setupTinyMce = (editor) => document.querySelector("eisenhower-editor").onSetupTinyMce(editor);
-window.initTinyMce = (event) => document.querySelector("eisenhower-editor").onInitTinyMce(event);
-window.keyUpTinyMce = () => document.querySelector("eisenhower-editor").onKeyUpTinyMce();
-
 import "https://cdn.jsdelivr.net/npm/@tinymce/tinymce-webcomponent@1/dist/tinymce-webcomponent.min.js"
 
 import { Api } from "../services/Api.js";
+import { EditorSharingButton } from "./EditorSharingButton.js";
 import "./SyncStatus.js";
+import { Router } from "../services/Router.js";
 
+// TinyMCE requires global callbacks for event handling
+window.setupTinyMce = (editor) => document.querySelector("eisenhower-editor").onSetupTinyMce(editor);
+window.initTinyMce = (event) => document.querySelector("eisenhower-editor").onInitTinyMce(event);
+window.keyUpTinyMce = () => document.querySelector("eisenhower-editor").onKeyUpTinyMce();
 
 const template = document.createElement("template");
 template.innerHTML = `
@@ -19,6 +20,17 @@ template.innerHTML = `
             left: 0;
             display: block;
         }
+        #sharing-footer {
+            background-color: LemonChiffon;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 10px;
+            z-index: 9999;
+            font-family: sans-serif;
+            visibility: hidden;
+        }
     </style>
 
     <p id="loading">Loading...</p>
@@ -28,13 +40,15 @@ template.innerHTML = `
         menubar="false"
         content_style="body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
         plugins="preview importcss searchreplace autolink directionality code visualblocks visualchars fullscreen image link media template codesample table charmap pagebreak nonbreaking anchor insertdatetime advlist lists wordcount help charmap quickbars emoticons"
-        toolbar="undo redo | bold italic underline strikethrough | fontfamily blocks | alignleft aligncenter alignright alignjustify | outdent indent | numlist bullist | forecolor backcolor removeformat | print | media link codesample"
+        toolbar="undo redo | bold italic underline strikethrough | fontfamily blocks | alignleft aligncenter alignright alignjustify | outdent indent | numlist bullist | forecolor backcolor removeformat | print | media link codesample | sharingButton"
 
         setup="setupTinyMce"
         on-Init="initTinyMce"
         on-KeyUp="keyUpTinyMce"
     >
     </tinymce-editor>
+    
+    <div id="sharing-footer">This document is being shared in read-only mode</div>
     
     <eisenhower-sync-status></eisenhower-sync-status>
 `;
@@ -49,6 +63,8 @@ export class Editor extends HTMLElement {
     saving = false;
     editorWrapper;
     editor;
+    editorSharingButton;
+    isGuestUser;
 
     constructor() {
         super();
@@ -67,6 +83,14 @@ export class Editor extends HTMLElement {
                     this.shadowRoot.getElementById("loading").style.display = "none";
                     this.editorWrapper.style.display = "block";
                     this.editor.setContent(this.initialContent);
+                    if (!this.isGuestUser) {
+                        this.editorSharingButton = new EditorSharingButton(this.editor, this.noteId);
+                    }
+                    else {
+                        this.editor.getBody().setAttribute('contenteditable', false);
+                        this.editor.execCommand("ToggleToolbarDrawer");
+                        this.shadowRoot.getElementById("sharing-footer").style.visibility = "visible";
+                    }
                 }
             })
     }
@@ -101,10 +125,13 @@ export class Editor extends HTMLElement {
     loadDocument() {
         return Api.notes.get(this.noteId)
             .then((resp) => {
-                if (resp.status && resp.status === 404) {
+                if (resp.status === 404) {
                     return false;
                 }
-                document.title = resp.text;
+                else if (resp.status === 200) {
+                    // User has the right to access the note, we can set the document title
+                    document.title = resp.text;
+                }
                 return Api.attachedDocuments.get(this.noteId);
             })
             .then((resp) => {
@@ -112,13 +139,23 @@ export class Editor extends HTMLElement {
                     console.log(`Attached document for note ${this.noteId} can't be retrieved. Creating a new document`);
                     return this.createNewDocument();
                 }
-                else {
+                else if (resp.status <= 302) {
                     return resp;
                 }
+                else {
+                    Router.goToHome();
+                }
+            })
+            .then(resp => {
+                this.isGuestUser = resp.headers.has("X-Document-Guest");
+                return resp;
             })
             .then(resp => resp.text())
             .then(content => {
                 this.initialContent = content;
+                if (this.isGuestUser) {
+                    document.title = this.initialContent.substring(0, 50).replace(/<[^>]+>/g, '') + "...";
+                }
                 return true;
             });
     }

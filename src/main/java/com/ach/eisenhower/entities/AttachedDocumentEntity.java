@@ -23,6 +23,10 @@ public class AttachedDocumentEntity {
     @Getter @Setter
     private byte[] content;
 
+    @Column(nullable = false)
+    @Getter @Setter
+    private boolean sharingEnabled = false;
+
     private UUID _noteId;
     @Id
     public UUID getNoteId() {

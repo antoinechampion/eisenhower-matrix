@@ -120,6 +120,12 @@ export class AttachedDocuments {
             body: form,
         });
     };
+
+    static share (noteId) {
+        return $fetch(`/api/attached-document/${noteId}/share`, {
+            method: "POST",
+        });
+    }
 }
 
 /**

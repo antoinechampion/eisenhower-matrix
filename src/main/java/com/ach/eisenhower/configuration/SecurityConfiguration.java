@@ -7,6 +7,7 @@ import com.ach.eisenhower.services.UserTokenParserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -75,8 +76,9 @@ public class SecurityConfiguration {
                 .sessionManagement(c -> c.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .exceptionHandling(c -> c.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(HttpMethod.GET, "/api/attached-document/**").permitAll()
                         .requestMatchers("/api/**").authenticated()
-                        .requestMatchers("/matrix**", "/editor**").authenticated()
+                        .requestMatchers("/matrix**").authenticated()
                         .requestMatchers("/auth/user-details").authenticated()
                         .anyRequest().permitAll()
                 )
