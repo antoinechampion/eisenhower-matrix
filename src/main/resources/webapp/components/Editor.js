@@ -83,14 +83,14 @@ export class Editor extends HTMLElement {
                     this.shadowRoot.getElementById("loading").style.display = "none";
                     this.editorWrapper.style.display = "block";
                     this.editor.setContent(this.initialContent);
-                    if (!this.isGuestUser) {
-                        this.editorSharingButton = new EditorSharingButton(this.editor, this.noteId);
-                    }
-                    else {
-                        this.editor.getBody().setAttribute('contenteditable', false);
-                        this.editor.execCommand("ToggleToolbarDrawer");
-                        this.shadowRoot.getElementById("sharing-footer").style.visibility = "visible";
-                    }
+                    this.editorSharingButton.noteId = this.noteId;
+                }
+            })
+            .then(() => {
+                if (this.isGuestUser)  {
+                    this.editor.getBody().setAttribute('contenteditable', false);
+                    this.editor.execCommand("ToggleToolbarDrawer");
+                    this.shadowRoot.getElementById("sharing-footer").style.visibility = "visible";
                 }
             })
     }
@@ -125,11 +125,7 @@ export class Editor extends HTMLElement {
     loadDocument() {
         return Api.notes.get(this.noteId)
             .then((resp) => {
-                if (resp.status === 404) {
-                    return false;
-                }
-                else if (resp.status === 200) {
-                    // User has the right to access the note, we can set the document title
+                if (resp.id) {
                     document.title = resp.text;
                 }
                 return Api.attachedDocuments.get(this.noteId);
@@ -157,7 +153,8 @@ export class Editor extends HTMLElement {
                     document.title = this.initialContent.substring(0, 50).replace(/<[^>]+>/g, '') + "...";
                 }
                 return true;
-            });
+            })
+            .catch(() => false);
     }
 
     /**
@@ -166,6 +163,7 @@ export class Editor extends HTMLElement {
      */
     onSetupTinyMce(editor) {
         this.editor = editor;
+        this.editorSharingButton = new EditorSharingButton(this.editor);
     }
 
     /**

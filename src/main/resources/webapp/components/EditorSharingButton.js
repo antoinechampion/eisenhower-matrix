@@ -4,11 +4,13 @@ export class EditorSharingButton {
     editor;
     noteId;
 
-    constructor(editor, noteId) {
+    constructor(editor) {
         this.editor = editor;
-        this.noteId = noteId;
-
         this.setupSharingComponents();
+    }
+
+    set noteId(id) {
+        this.noteId = id;
     }
 
     get sharingLink() {

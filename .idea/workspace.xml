@@ -9,7 +9,8 @@
   <component name="ChangeListManager">
     <list default="true" id="18b7bc88-7b86-4ad7-9188-b8601b5ba4ae" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/services/AttachedDocumentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/services/AttachedDocumentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/components/Editor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/components/Editor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/components/EditorSharingButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/components/EditorSharingButton.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,24 +49,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;add-document-sharing&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;7b703a88d8c222fc7be42053e8d27916&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  }
-}</component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\antoi\Documents\Prog\Java\eisenhower-matrix\src\main\resources" />
@@ -95,7 +85,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.java in eisenhower">
+  <component name="RunManager" selected="Spring Boot.ServerApplication">
     <configuration name="AttachedDocumentTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="eisenhower" />
       <extension name="coverage">
@@ -178,11 +168,11 @@
       </method>
     </configuration>
     <configuration name="ServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <option name="ACTIVE_PROFILES" value="dev" />
-      <option name="ALTERNATIVE_JRE_PATH" value="BUNDLED" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <module name="eisenhower" />
+      <module name="eisenhower-matrix" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.ach.eisenhower.ServerApplication" />
+      <option name="ACTIVE_PROFILES" value="dev" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-17" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -240,10 +230,22 @@
       <workItem from="1687440845986" duration="11000" />
       <workItem from="1687440980732" duration="175000" />
       <workItem from="1687441337612" duration="46000" />
+      <workItem from="1691432950931" duration="2093000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
