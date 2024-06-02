@@ -82,8 +82,10 @@ export class PaletteCollection {
         this.palettes.set("Post-It", this.postItPalette);
         this.palettes.set("Shade", this.shadePalette);
         this.palettes.set("High Contrast", this.highContrastPalette);
-        const paletteCookie =  ('; '+document.cookie).split(`; palette=`).pop().split(';')[0];
-        this.activePaletteName = decodeURIComponent(paletteCookie);
+
+        this.migrateToLocalStorage_DeleteOldCookie();
+
+        this.activePaletteName = localStorage.getItem("palette");
     }
 
     get activePalette() {
@@ -104,7 +106,7 @@ export class PaletteCollection {
         }
         this._activePalette = this.palettes.get(this._activePaletteName);
 
-        document.cookie = `${encodeURIComponent("palette")}=${encodeURIComponent(paletteName)}; path=/; max-age=31536000";`;
+        localStorage.setItem("palette", paletteName);
     }
 
     get defaultPaletteName() {
@@ -171,5 +173,14 @@ export class PaletteCollection {
         const textColor = "hsl(360, 100%, 0%)";
 
         return new Palette(noteColors, quadrantColors, arrowsColor, textColor);
+    }
+
+    migrateToLocalStorage_DeleteOldCookie() {
+        const paletteCookie =  ('; '+document.cookie).split(`; palette=`).pop().split(';')[0];
+        const decodedCookie = decodeURIComponent(paletteCookie);
+        if (decodedCookie) {
+            localStorage.setItem("palette", decodedCookie);
+            document.cookie = `${encodeURIComponent("palette")}=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT";`;
+        }
     }
 }
