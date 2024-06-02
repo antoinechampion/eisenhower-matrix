@@ -108,7 +108,7 @@ export class Matrix extends HTMLElement {
         this.matrixContainer = shadowRoot.getElementById("matrix-container");
         this.background = shadowRoot.querySelector("eisenhower-background-canvas");
         this.settings = shadowRoot.querySelector("eisenhower-matrix-settings");
-        this.background.paletteCollection = this.settings.paletteCollection;
+        this.background.matrixSettings = this.settings;
     }
 
     connectedCallback() {
@@ -360,7 +360,6 @@ export class Matrix extends HTMLElement {
      * Updates the color of the notes and background when the palette changed
      */
     onPaletteSelectionChanged() {
-        this.background.drawBackground();
         const notesDom = this.shadowRoot.querySelectorAll(".note");
         for (let noteDom of notesDom) {
             let colors = this.settings.paletteCollection.activePalette.noteColors.nextColors;
