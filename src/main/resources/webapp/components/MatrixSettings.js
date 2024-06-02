@@ -18,12 +18,17 @@ template.innerHTML = `
             <sl-menu-item>Shade</sl-menu-item>
             <sl-menu-item>High Contrast</sl-menu-item>
         </div>
+        <sl-divider></sl-divider>
+        <sl-menu-item id="flipMatrixButton">Flip Matrix</sl-menu-item>
     </sl-menu>
 `;
 
+/**
+ * Display the collapsable settings menu at the bottom of the matrix and manage the storage and change of the settings
+ */
 export class MatrixSettings extends HTMLElement {
     paletteCollection;
-    flipBoard;
+    flipMatrix;
 
     constructor() {
         super();
@@ -31,13 +36,13 @@ export class MatrixSettings extends HTMLElement {
         shadowRoot.appendChild(template.content.cloneNode(true));
 
         this.paletteCollection = new PaletteCollection();
-        this.flipBoard = true;
+        this.flipMatrix = localStorage.getItem("flipMatrix") === "true";
     }
 
     connectedCallback() {
         this.initLogoutButton();
         this.initPaletteSelector();
-
+        this.initFlipMatrixButton();
     }
 
     /**
@@ -86,6 +91,21 @@ export class MatrixSettings extends HTMLElement {
     toggleMenu() {
         const menu = this.shadowRoot.querySelector("sl-menu");
         menu.style.display = menu.style.display === "none" ? "block" : "none";
+    }
+
+    /**
+     * Flip the vertical axis of the matrix
+     */
+    initFlipMatrixButton() {
+        const button = this.shadowRoot.getElementById("flipMatrixButton");
+        button.checked = this.flipMatrix;
+
+        button.addEventListener("click", () => {
+            this.flipMatrix = !this.flipMatrix;
+            button.checked = this.flipMatrix;
+            localStorage.setItem("flipMatrix", this.flipMatrix);
+            this.dispatchEvent(new Event("flipMatrix"));
+        });
     }
 }
 

@@ -9,7 +9,7 @@ template.innerHTML = `
 export class BackgroundCanvas extends HTMLElement {
     canvas;
     ctx;
-    _paletteCollection;
+    settings;
 
     constructor() {
         super();
@@ -21,15 +21,17 @@ export class BackgroundCanvas extends HTMLElement {
         this.ctx = this.canvas.getContext("2d");
     }
 
-    set paletteCollection(other) {
-        this._paletteCollection = other;
+    set matrixSettings(settings) {
+        this.settings = settings;
+        this.settings.addEventListener("paletteSelectionChanged", () => this.drawBackground());
+        this.settings.addEventListener("flipMatrix", () => this.drawBackground());
     }
 
     drawArrow(fromx, tox, fromy, toy, arrowWidth) {
         const headlen = 10;
         const angle = Math.atan2(toy - fromy, tox - fromx);
 
-        this.ctx.strokeStyle = this._paletteCollection.activePalette.arrowsColor;
+        this.ctx.strokeStyle = this.settings.paletteCollection.activePalette.arrowsColor;
 
         this.ctx.beginPath();
         this.ctx.moveTo(fromx, fromy);
@@ -63,15 +65,38 @@ export class BackgroundCanvas extends HTMLElement {
 
     drawText() {
         this.ctx.font = "24px 'Arial Black'";
-        this.ctx.fillStyle = this._paletteCollection.activePalette.textColor;
-        this.ctx.fillText("IMPORTANT", 20, 40);
-        this.ctx.fillText("NOT URGENT", 20, 70);
-        this.ctx.fillText("IMPORTANT", this.canvas.width - 180, 40);
-        this.ctx.fillText("URGENT", this.canvas.width - 180, 70);
-        this.ctx.fillText("NOT IMPORTANT", 20, this.canvas.height - 60);
-        this.ctx.fillText("NOT URGENT", 20, this.canvas.height - 30);
-        this.ctx.fillText("NOT IMPORTANT", this.canvas.width - 240, this.canvas.height - 60);
-        this.ctx.fillText("URGENT", this.canvas.width - 240, this.canvas.height - 30);
+        this.ctx.fillStyle = this.settings.paletteCollection.activePalette.textColor;
+
+        const quadrantPositions = [
+            {x: 20, y: 40},
+            {x: this.canvas.width - 180, y: 40},
+            {x: 20, y: this.canvas.height - 60},
+            {x: this.canvas.width - 180, y: this.canvas.height - 60},
+        ];
+        const lineJump = 30;
+
+        let quadrantTexts;
+        if (this.settings.flipMatrix) {
+            quadrantTexts = [
+                ["IMPORTANT", "NOT URGENT"],
+                ["IMPORTANT", "URGENT"],
+                ["NOT IMPORTANT", "NOT URGENT"],
+                ["NOT IMPORTANT", "URGENT"],
+            ];
+        }
+        else {
+            quadrantTexts = [
+                ["IMPORTANT", "URGENT"],
+                ["IMPORTANT", "NOT URGENT"],
+                ["NOT IMPORTANT", "URGENT"],
+                ["NOT IMPORTANT", "NOT URGENT"],
+            ];
+        }
+
+        for (let i = 0; i < 4; i++) {
+            this.ctx.fillText(quadrantTexts[i][0], quadrantPositions[i].x, quadrantPositions[i].y);
+            this.ctx.fillText(quadrantTexts[i][1], quadrantPositions[i].x, quadrantPositions[i].y + lineJump);
+        }
     }
 
     drawBackground() {
@@ -79,27 +104,33 @@ export class BackgroundCanvas extends HTMLElement {
             {
                 x: 0,
                 y: 0,
-                color: this._paletteCollection.activePalette.quadrantColors.q1
+                color: this.settings.paletteCollection.activePalette.quadrantColors.q1
             },
             {
                 x: this.canvas.width / 2,
                 y: 0,
-                color: this._paletteCollection.activePalette.quadrantColors.q2
+                color: this.settings.paletteCollection.activePalette.quadrantColors.q2
             },
             {
                 x: 0,
                 y: this.canvas.height / 2,
-                color: this._paletteCollection.activePalette.quadrantColors.q3
+                color: this.settings.paletteCollection.activePalette.quadrantColors.q3
             },
             {
                 x: this.canvas.width / 2,
                 y: this.canvas.height / 2,
-                color: this._paletteCollection.activePalette.quadrantColors.q4
+                color: this.settings.paletteCollection.activePalette.quadrantColors.q4
             },
         ]);
         const stroke = 2;
-        this.drawArrow(0, this.canvas.width - stroke, this.canvas.height / 2,
-            this.canvas.height / 2, stroke);
+        if (this.settings.flipMatrix) {
+            this.drawArrow(0, this.canvas.width - stroke, this.canvas.height / 2,
+                this.canvas.height / 2, stroke);
+        }
+        else {
+            this.drawArrow(this.canvas.width - stroke, 0, this.canvas.height / 2,
+                this.canvas.height / 2, stroke);
+        }
         this.drawArrow(this.canvas.width / 2, this.canvas.width / 2,
             this.canvas.height, stroke, stroke);
         this.drawText();
