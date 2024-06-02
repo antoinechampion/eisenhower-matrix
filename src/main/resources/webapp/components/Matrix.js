@@ -1,10 +1,10 @@
 import "https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"
 
-import {Api} from "../services/Api.js";
-import { PaletteCollection } from "../services/Palette.js"
+import { Api } from "../services/Api.js";
 import { Router } from "../services/Router.js";
 import "./SyncStatus.js";
 import "./BackgroundCanvas.js";
+import "./MatrixSettings.js";
 
 const template = document.createElement("template");
 template.innerHTML = `
@@ -68,16 +68,7 @@ template.innerHTML = `
     <eisenhower-background-canvas></eisenhower-background-canvas>
     
     <div class="buttons-bar">
-        <sl-menu id="settingsMenu" style="display: none">
-            <sl-menu-item id="logoutButton">Log Out</sl-menu-item>
-            <sl-divider></sl-divider>
-            <sl-menu-label>Palette</sl-menu-label>
-            <div id="paletteMenuSection">
-                <sl-menu-item>Post-It</sl-menu-item>
-                <sl-menu-item>Shade</sl-menu-item>
-                <sl-menu-item>High Contrast</sl-menu-item>
-            </div>
-        </sl-menu>
+        <eisenhower-matrix-settings></eisenhower-matrix-settings>
         <svg id="button-add" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="blue" viewBox="0 0 16 16">
             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"></path>
         </svg>
@@ -106,18 +97,18 @@ export class Matrix extends HTMLElement {
     saving = false;
     activeBoard;
     lastSelectedNote = null;
-    paletteCollection;
     matrixContainer;
     background;
+    settings;
 
     constructor() {
         super();
         const shadowRoot = this.attachShadow({ mode: "open" });
         shadowRoot.appendChild(template.content.cloneNode(true));
-        this.paletteCollection = new PaletteCollection();
         this.matrixContainer = shadowRoot.getElementById("matrix-container");
         this.background = shadowRoot.querySelector("eisenhower-background-canvas");
-        this.background.paletteCollection = this.paletteCollection;
+        this.settings = shadowRoot.querySelector("eisenhower-matrix-settings");
+        this.background.paletteCollection = this.settings.paletteCollection;
     }
 
     connectedCallback() {
@@ -126,11 +117,11 @@ export class Matrix extends HTMLElement {
             .addEventListener("click", () => {
                 this.lastSelectedNote = null;
             });
+        this.settings.addEventListener("paletteSelectionChanged", () => this.onPaletteSelectionChanged());
 
         this.initInteractJs();
         this.initBoardNotes();
         this.initButtons();
-        this.initSettings();
 
         setInterval(this.saveNoteCron.bind(this), 1000);
     }
@@ -225,7 +216,7 @@ export class Matrix extends HTMLElement {
      */
     createNote(note) {
         let noteDom = document.createElement("textarea");
-        const colors = this.paletteCollection.activePalette.noteColors.nextColors;
+        const colors = this.settings.paletteCollection.activePalette.noteColors.nextColors;
         noteDom.style["background-color"] = colors.background;
         noteDom.style["border-color"] = colors.border;
         noteDom.classList.add("note");
@@ -335,51 +326,7 @@ export class Matrix extends HTMLElement {
                 Router.goToEditor(noteId);
             });
         this.shadowRoot.getElementById("button-settings")
-            .addEventListener("click", () => {
-                const menu = this.shadowRoot.getElementById("settingsMenu");
-                menu.style.display = menu.style.display === "none" ? "block" : "none";
-            });
-    }
-
-    /**
-     * Initializes the settings menu and its callbacks
-     */
-    initSettings() {
-        this.shadowRoot.getElementById("logoutButton")
-            .addEventListener("click", () => {
-                Api.auth.logout().then(Router.goToHome);
-            });
-
-        this.refreshPalettesMenu();
-
-        const paletteMenuSection = this.shadowRoot.getElementById("paletteMenuSection");
-        for (let paletteButton of paletteMenuSection.children) {
-            const buttonPaletteName = paletteButton.innerHTML.trim();
-            paletteButton.addEventListener("click", () => {
-                this.paletteCollection.activePaletteName = buttonPaletteName;
-                this.background.drawBackground();
-                const notesDom = this.shadowRoot.querySelectorAll(".note");
-                for (let noteDom of notesDom) {
-                    let colors = this.paletteCollection.activePalette.noteColors.nextColors;
-                    noteDom.style["background-color"] = colors.background;
-                    noteDom.style["border-color"] = colors.border;
-                }
-                this.refreshPalettesMenu();
-            })
-        }
-    }
-
-    /**
-     * Refresh the Palette section in the settings menu
-     */
-    refreshPalettesMenu() {
-        const activePaletteName = this.paletteCollection.activePaletteName;
-        const paletteMenuSection = this.shadowRoot.getElementById("paletteMenuSection");
-        for (let paletteButton of paletteMenuSection.children) {
-            const buttonPaletteName = paletteButton.innerHTML.trim();
-            paletteButton.checked = buttonPaletteName === activePaletteName;
-            paletteButton.render();
-        }
+            .addEventListener("click", () => this.settings.toggleMenu());
     }
 
     /**
@@ -406,6 +353,19 @@ export class Matrix extends HTMLElement {
 
         for (let i = 0; i < notes.length; i++) {
             notes[i].style["z-index"] = 100 + i;
+        }
+    }
+
+    /**
+     * Updates the color of the notes and background when the palette changed
+     */
+    onPaletteSelectionChanged() {
+        this.background.drawBackground();
+        const notesDom = this.shadowRoot.querySelectorAll(".note");
+        for (let noteDom of notesDom) {
+            let colors = this.settings.paletteCollection.activePalette.noteColors.nextColors;
+            noteDom.style["background-color"] = colors.background;
+            noteDom.style["border-color"] = colors.border;
         }
     }
 }
