@@ -135,37 +135,56 @@
             <plugin>
                 <groupId>com.github.eirslett</groupId>
                 <artifactId>frontend-maven-plugin</artifactId>
-                <version>1.12.1</version>
-
+                <version>1.15.0</version>
+                <configuration>
+                    <nodeVersion>v20.10.0</nodeVersion>
+                    <npmVersion>10.2.5</npmVersion>
+                    <workingDirectory>frontend</workingDirectory>
+                </configuration>
                 <executions>
                     <execution>
-                        <id>Install local node and yarn</id>
+                        <id>install node and npm</id>
                         <goals>
-                            <goal>install-node-and-yarn</goal>
+                            <goal>install-node-and-npm</goal>
                         </goals>
                     </execution>
                     <execution>
-                        <id>Install node dependencies</id>
+                        <id>npm install</id>
                         <goals>
-                            <goal>yarn</goal>
+                            <goal>npm</goal>
                         </goals>
                     </execution>
                     <execution>
-                        <id>Running JS tests</id>
-                        <phase>test</phase>
+                        <id>npm run build</id>
                         <goals>
-                            <goal>yarn</goal>
+                            <goal>npm</goal>
                         </goals>
                         <configuration>
-                            <arguments>test</arguments>
+                            <arguments>run build</arguments>
                         </configuration>
                     </execution>
                 </executions>
-                <configuration>
-                    <nodeVersion>v18.12.1</nodeVersion>
-                    <yarnVersion>v1.22.19</yarnVersion>
-                    <workingDirectory>src/test/javascript</workingDirectory>
-                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-frontend-build</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.outputDirectory}/static</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/resources/static</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

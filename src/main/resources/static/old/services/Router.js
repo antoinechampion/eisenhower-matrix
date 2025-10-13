@@ -3,16 +3,16 @@
  */
 export class Router {
     static goToHome() {
-        Router.goToPage("/");
+        Router.goToPage("/old/index.html");
     }
 
     static goToMatrix(boardId) {
-        const url = boardId ? `/matrix?boardId=${boardId}` : "/matrix";
+        const url = boardId ? `/old/matrix.html?boardId=${boardId}` : "/old/matrix.html";
         Router.goToPage(url);
     }
 
     static goToEditor(noteId) {
-        window.open(`/editor?noteId=${noteId}`, "_blank");
+        window.open(`/old/editor.html?noteId=${noteId}`, "_blank");
     }
 
     static goToPage(url) {

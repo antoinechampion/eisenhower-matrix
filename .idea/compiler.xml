@@ -8,7 +8,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="eisenhower" />
-        <module name="eisenhower-matrix" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

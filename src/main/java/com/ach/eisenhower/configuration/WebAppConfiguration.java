@@ -25,22 +25,27 @@ public class WebAppConfiguration implements WebMvcConfigurer {
     public WebMvcConfigurer appConfig() {
 
         return new WebMvcConfigurer() {
-            @Override
-            public void addViewControllers(@NonNull ViewControllerRegistry registry) {
-                registry.addViewController("/")
-                        .setViewName("forward:/index.html");
-                registry.addViewController("/faq")
-                        .setViewName("forward:/faq.html");
-                registry.addViewController("/matrix")
-                        .setViewName("forward:/matrix.html");
-                registry.addViewController("/editor")
-                        .setViewName("forward:/editor.html");
-            }
 
             @Override
             public void addInterceptors(@NonNull InterceptorRegistry registry) {
                 registry.addInterceptor(new HomePageRedirectHandler()).addPathPatterns("/");
                 registry.addInterceptor(new UserVisitInterceptor(userRepository)).addPathPatterns("/matrix");
+            }
+
+            @Override
+            public void addResourceHandlers(@NonNull ResourceHandlerRegistry registry) {
+                // Serve static files from classpath:/static/
+                registry.addResourceHandler("/**")
+                        .addResourceLocations("classpath:/static/")
+                        .resourceChain(false);
+            }
+
+            @Override
+            public void addViewControllers(@NonNull ViewControllerRegistry registry) {
+                // Forward all non-API/auth routes to index.html for client-side routing
+                // This allows Vue Router to handle the routing
+                registry.addViewController("/{spring:\\w+}")
+                        .setViewName("forward:/index.html");
             }
         };
     }

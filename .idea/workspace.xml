@@ -7,15 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="18b7bc88-7b86-4ad7-9188-b8601b5ba4ae" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/services/DatabaseCleanupService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/ach/eisenhower/DatabaseCleanupTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/ServerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/ServerApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/entities/BoardEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/entities/BoardEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/entities/EisenhowerUserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/entities/EisenhowerUserEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/repositories/EisenhowerUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/repositories/EisenhowerUserRepository.java" afterDir="false" />
-    </list>
+    <list default="true" id="18b7bc88-7b86-4ad7-9188-b8601b5ba4ae" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,14 +40,14 @@
 }</component>
   <component name="JavaAutoRunManager">
     <enabled-run-configurations>
-      <run-configuration type="JUnit" name="DatabaseCleanupTest" />
       <run-configuration type="JUnit" name="DatabaseCleanupTest.testInactiveUsersAreDeleted" />
+      <run-configuration type="JUnit" name="DatabaseCleanupTest" />
     </enabled-run-configurations>
   </component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -83,22 +75,31 @@
     "JUnit.DatabaseCleanupTest.executor": "Run",
     "JUnit.DatabaseCleanupTest.testInactiveUsersAreDeleted.executor": "Run",
     "JUnit.java in eisenhower.executor": "Run",
+    "Maven.eisenhower [org.apache.maven.plugins:maven-compiler-plugin:3.10.1:compile].executor": "Run",
+    "Notification.DisplayName-DoNotAsk-DatabaseConfigFileWatcher.found": "New/updated database configurations found",
+    "Notification.DoNotAsk-DatabaseConfigFileWatcher.found": "true",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.ServerApplication (1).executor": "Run",
     "Spring Boot.ServerApplication.executor": "Run",
-    "git-widget-placeholder": "main",
+    "Spring Boot.Spring Server.executor": "Run",
+    "git-widget-placeholder": "migrate-to-vuejs",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/achampion/oss/eisenhower-matrix",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "yarn",
+    "npm.Vite Server.executor": "Run",
     "settings.editor.selected.configurable": "configurable.group.junie",
+    "ts.external.directory.path": "/Users/achampion/Library/Application Support/JetBrains/IntelliJIdea2025.2/plugins/javascript-plugin/jsLanguageServicesImpl/external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -107,11 +108,11 @@
       <recent name="com.ach.eisenhower.services" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/static" />
       <recent name="C:\Users\antoi\Documents\Prog\Java\eisenhower-matrix\src\main\resources" />
       <recent name="$PROJECT_DIR$/src/main/resources/webapp/services" />
       <recent name="$PROJECT_DIR$/src/main/resources/webapp" />
       <recent name="$PROJECT_DIR$/src/main/resources/webapp/components" />
-      <recent name="$PROJECT_DIR$/src/main/resources/webapp/images" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.ach.eisenhower" />
@@ -133,8 +134,19 @@
         <option value="SpringBootApplicationConfigurationType" />
       </set>
     </option>
+    <option name="configurationStatuses">
+      <map>
+        <entry key="SpringBootApplicationConfigurationType">
+          <value>
+            <map>
+              <entry key="Spring Server" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
-  <component name="RunManager" selected="JUnit.DatabaseCleanupTest.testInactiveUsersAreDeleted">
+  <component name="RunManager" selected="Spring Boot.Spring Server">
     <configuration name="AttachedDocumentTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="eisenhower" />
       <extension name="coverage">
@@ -208,23 +220,39 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ServerApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="eisenhower-matrix" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ach.eisenhower.ServerApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <configuration name="Spring Server" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <option name="ACTIVE_PROFILES" value="dev" />
-      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-17" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <envs>
+        <env name="DATABASE_PASSWORD" value="password" />
+        <env name="DATABASE_USER" value="username" />
+        <env name="JDBC_URL" value="jdbc:sqlserver://localhost:1433;databaseName=eisenhower_test;encrypt=false" />
+        <env name="JWT_SIGNING_KEY" value="testtesttesttesttesttesttesttest" />
+      </envs>
       <module name="eisenhower" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.ach.eisenhower.ServerApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Vite Server" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/frontend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.AttachedDocumentTest" />
+      <item itemvalue="JUnit.AttachedDocumentTest.testCreateAttachedDocumentWithGuestAccess" />
+      <item itemvalue="JUnit.DatabaseCleanupTest" />
+      <item itemvalue="JUnit.DatabaseCleanupTest.testInactiveUsersAreDeleted" />
+      <item itemvalue="JUnit.java in eisenhower" />
+      <item itemvalue="npm.Vite Server" />
+      <item itemvalue="Spring Boot.Spring Server" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.DatabaseCleanupTest.testInactiveUsersAreDeleted" />
@@ -234,14 +262,6 @@
         <item itemvalue="JUnit.AttachedDocumentTest" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.26094.121" />
-        <option value="bundled-js-predefined-d6986cc7102b-b26f3e71634d-JavaScript-IU-251.26094.121" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -292,6 +312,9 @@
       <workItem from="1750515986904" duration="75000" />
       <workItem from="1750516264594" duration="65000" />
       <workItem from="1750516637340" duration="619000" />
+      <workItem from="1760346149415" duration="3514000" />
+      <workItem from="1760353824823" duration="68000" />
+      <workItem from="1760353899665" duration="5585000" />
     </task>
     <servers />
   </component>
