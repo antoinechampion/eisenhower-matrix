@@ -14,10 +14,10 @@ import "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.87/dist
 import "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.87/dist/components/tab-panel/tab-panel.js";
 import "https://www.googletagmanager.com/gtag/js?id=G-M7FBHCJPJX"
 
-import "/components/NavigationBar.js";
-import "/components/LoginForm.js";
-import "/components/Matrix.js";
-import "/components/Editor.js";
+import "./components/NavigationBar.js";
+import "./components/LoginForm.js";
+import "./components/Matrix.js";
+import "./components/Editor.js";
 
 
 window.dataLayer = window.dataLayer || [];
