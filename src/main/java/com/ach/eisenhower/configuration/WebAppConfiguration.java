@@ -46,6 +46,9 @@ public class WebAppConfiguration implements WebMvcConfigurer {
                 // This allows Vue Router to handle the routing
                 registry.addViewController("/{spring:\\w+}")
                         .setViewName("forward:/index.html");
+                // Nested editor route (/editor/:noteId) — forward to index.html as well
+                registry.addViewController("/editor/**")
+                        .setViewName("forward:/index.html");
             }
         };
     }

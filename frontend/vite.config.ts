@@ -11,7 +11,7 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [
       vue(),
-      vueDevTools(),
+      ...(mode !== 'test' ? [vueDevTools()] : []),
     ],
     resolve: {
       alias: {
@@ -34,6 +34,10 @@ export default defineConfig(({ mode }) => {
       // Enable CORS for development
       cors: true
     },
+    test: {
+      environment: 'jsdom',
+      globals: true,
+    },
     build: {
       // Output directory relative to the project root
       outDir: '../src/main/resources/static',
@@ -41,7 +45,7 @@ export default defineConfig(({ mode }) => {
       // Generate source maps for production builds
       sourcemap: mode !== 'production',
       // Minify for production builds
-      minify: mode === 'production' ? 'terser' : false,
+      minify: mode === 'production' ? 'esbuild' : false,
       // Configure chunk size warning limit
       chunkSizeWarningLimit: 1000,
       rollupOptions: {
