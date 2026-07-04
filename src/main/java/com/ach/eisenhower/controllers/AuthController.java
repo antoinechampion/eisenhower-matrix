@@ -1,6 +1,7 @@
 package com.ach.eisenhower.controllers;
 
 import com.ach.eisenhower.repositories.EisenhowerUserRepository;
+import com.ach.eisenhower.services.PasswordResetService;
 import com.ach.eisenhower.services.UserService;
 import com.ach.eisenhower.services.UserTokenParserService;
 import jakarta.servlet.http.Cookie;
@@ -33,12 +34,14 @@ public class AuthController {
     final UserTokenParserService userTokenParserService;
     final EisenhowerUserRepository users;
     final PasswordEncoder encoder;
+    final PasswordResetService passwordResetService;
 
-    public AuthController(AuthenticationManager authenticationManager, UserTokenParserService userTokenParserService, EisenhowerUserRepository users, PasswordEncoder encoder) {
+    public AuthController(AuthenticationManager authenticationManager, UserTokenParserService userTokenParserService, EisenhowerUserRepository users, PasswordEncoder encoder, PasswordResetService passwordResetService) {
         this.authenticationManager = authenticationManager;
         this.userTokenParserService = userTokenParserService;
         this.users = users;
         this.encoder = encoder;
+        this.passwordResetService = passwordResetService;
     }
 
     /**
@@ -112,8 +115,30 @@ public class AuthController {
         return new UserDetailsResponse(user.getUsername(), roles);
     }
 
+    /**
+     * Requests a password reset. Always returns 200 regardless of whether the email is
+     * registered, so the endpoint cannot be used to enumerate accounts.
+     */
+    @PostMapping("/forgot-password")
+    @ResponseStatus(HttpStatus.OK)
+    public void forgotPassword(@RequestBody ForgotPasswordDto data) {
+        passwordResetService.requestReset(data.email);
+    }
+
+    /**
+     * Resets a password using a token from the emailed reset link.
+     * Returns 400 if the token is invalid or expired.
+     */
+    @PostMapping("/reset-password")
+    @ResponseStatus(HttpStatus.OK)
+    public void resetPassword(@RequestBody ResetPasswordDto data) {
+        passwordResetService.resetPassword(data.token, data.newPassword);
+    }
+
     private record AuthenticationRequestDto(String email, String password) {}
 
     private record LoginSuccessResponse(String email, String token) {}
     private record UserDetailsResponse(String email, List<String> roles) {}
+    private record ForgotPasswordDto(String email) {}
+    private record ResetPasswordDto(String token, String newPassword) {}
 }

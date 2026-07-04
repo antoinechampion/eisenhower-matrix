@@ -1,6 +1,32 @@
 <script setup lang="ts">
+import { onMounted, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import NavigationBar from '@/components/NavigationBar.vue'
 import LoginForm from '@/components/LoginForm.vue'
+import PasswordResetModal from '@/components/PasswordResetModal.vue'
+
+const route = useRoute()
+const router = useRouter()
+
+const modalOpen = ref(false)
+const modalMode = ref<'request' | 'reset'>('request')
+const resetToken = ref('')
+
+function openRequestModal() {
+  modalMode.value = 'request'
+  modalOpen.value = true
+}
+
+onMounted(() => {
+  const token = route.query.resetToken
+  if (typeof token === 'string' && token) {
+    resetToken.value = token
+    modalMode.value = 'reset'
+    modalOpen.value = true
+    // Strip the token from the URL so it isn't left in history or shared by accident.
+    router.replace({ path: '/' })
+  }
+})
 </script>
 
 <template>
@@ -16,7 +42,7 @@ import LoginForm from '@/components/LoginForm.vue'
       </p>
 
       <div class="demo-and-login">
-        <LoginForm />
+        <LoginForm @forgot-password="openRequestModal" />
         <div class="demo-card">
           <video poster="/images/preview.jpg" autoplay muted loop>
             <source src="/images/demo.mp4" type="video/mp4" />
@@ -36,6 +62,12 @@ import LoginForm from '@/components/LoginForm.vue'
         </div>
       </div>
     </div>
+
+    <PasswordResetModal
+      v-model:open="modalOpen"
+      :mode="modalMode"
+      :token="resetToken"
+    />
   </div>
 </template>
 
