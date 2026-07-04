@@ -19,11 +19,7 @@ jobs:
           password: ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
           registry: rg.fr-par.scw.cloud/achampion
       - name: Build, test, containerize
-        run: |
-          echo "$APPLICATION_PROPERTIES" >> src/main/resources/application.properties
-          mvn package
-        env:
-          APPLICATION_PROPERTIES: ${{ secrets.APPLICATION_PROPERTIES }}
+        run: mvn package
       - name: Push image to container registry
         run: docker push rg.fr-par.scw.cloud/achampion/eisenhower-server:latest
       - name: Deploy to Kubernetes
