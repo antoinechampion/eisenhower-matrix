@@ -50,6 +50,36 @@ spec:
                 secretKeyRef:
                   name: eisenhower
                   key: jwtSigningKey
+            - name: MAIL_SMTP_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: eisenhower
+                  key: mailSmtpHost
+            - name: MAIL_SMTP_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: eisenhower
+                  key: mailSmtpPort
+            - name: MAIL_SMTP_USER
+              valueFrom:
+                secretKeyRef:
+                  name: eisenhower
+                  key: mailSmtpUser
+            - name: MAIL_SMTP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: eisenhower
+                  key: mailSmtpPassword
+            - name: MAIL_FROM
+              valueFrom:
+                secretKeyRef:
+                  name: eisenhower
+                  key: mailFrom
+            - name: APP_BASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: eisenhower
+                  key: appBaseUrl
       imagePullSecrets:
         - name: scaleway-cr
 ---

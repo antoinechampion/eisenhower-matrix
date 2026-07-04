@@ -46,4 +46,10 @@ describe('LoginForm', () => {
     const wrapper = mount(LoginForm)
     expect(wrapper.find('.error-alert').text()).toBe('Wrong email or password')
   })
+
+  it('emits forgot-password when the link is clicked', async () => {
+    const wrapper = mount(LoginForm)
+    await wrapper.find('.forgot-link').trigger('click')
+    expect(wrapper.emitted('forgot-password')).toBeTruthy()
+  })
 })

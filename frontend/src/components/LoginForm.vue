@@ -2,6 +2,10 @@
 import { ref } from 'vue'
 import { useAuthStore } from '@/stores/auth'
 
+const emit = defineEmits<{
+  (e: 'forgot-password'): void
+}>()
+
 const auth = useAuthStore()
 const tab = ref<'register' | 'login'>('register')
 const email = ref('')
@@ -43,6 +47,10 @@ async function submit() {
         {{ tab === 'register' ? 'Register' : 'Log In' }}
       </button>
     </form>
+
+    <button type="button" class="forgot-link" @click="emit('forgot-password')">
+      Forgot password?
+    </button>
   </div>
 </template>
 
@@ -130,5 +138,15 @@ button[type='submit'] {
 }
 button[type='submit']:disabled {
   opacity: 0.6;
+}
+.forgot-link {
+  display: block;
+  margin: 12px auto 0;
+  border: none;
+  background: none;
+  color: #1c6ca1;
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 0;
 }
 </style>

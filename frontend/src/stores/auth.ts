@@ -5,6 +5,8 @@ import router from '@/router'
 export const useAuthStore = defineStore('auth', {
   state: () => ({
     error: null as string | null,
+    resetError: null as string | null,
+    resetSuccess: null as string | null,
   }),
   actions: {
     async login(email: string, password: string) {
@@ -37,6 +39,28 @@ export const useAuthStore = defineStore('auth', {
     async logout() {
       await Auth.logout().catch(() => null)
       router.push('/')
+    },
+    async requestPasswordReset(email: string) {
+      this.resetError = null
+      this.resetSuccess = null
+      // Always report success — the backend never reveals whether the email is registered.
+      await Auth.forgotPassword(email).catch(() => null)
+      this.resetSuccess = 'If that email is registered, a reset link has been sent.'
+    },
+    async resetPassword(token: string, newPassword: string) {
+      this.resetError = null
+      this.resetSuccess = null
+      const res = await Auth.resetPassword(token, newPassword).catch(() => null)
+      if (!res) {
+        this.resetError = "We can't reset your password — an internal error happened"
+        return false
+      }
+      if (res.status === 400) {
+        this.resetError = 'This reset link is invalid or has expired'
+        return false
+      }
+      this.resetSuccess = 'Your password has been reset. You can now log in.'
+      return true
     },
   },
 })

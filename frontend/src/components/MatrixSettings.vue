@@ -38,6 +38,7 @@ defineExpose({ toggleMenu })
         Flip Matrix
       </button>
     </div>
+    <slot />
   </div>
 </template>
 
@@ -48,7 +49,7 @@ defineExpose({ toggleMenu })
 }
 .settings-menu {
   position: absolute;
-  bottom: 44px;
+  bottom: 64px;
   right: 0;
   background: white;
   border: 1px solid #ccc;
