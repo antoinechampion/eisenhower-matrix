@@ -5,7 +5,7 @@ import NavigationBar from './NavigationBar.vue'
 describe('NavigationBar', () => {
   it('renders the app title', () => {
     const wrapper = mount(NavigationBar)
-    expect(wrapper.find('h1').text()).toBe('Eisenhower Matrix')
+    expect(wrapper.find('.nav__brand strong').text()).toBe('Eisenhower Matrix')
   })
 
   it('renders Home link', () => {

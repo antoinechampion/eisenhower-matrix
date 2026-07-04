@@ -22,6 +22,8 @@ describe('LoginForm', () => {
     const auth = useAuthStore()
     const spy = vi.spyOn(auth, 'login').mockResolvedValue()
     const wrapper = mount(LoginForm)
+    // Switch to login tab (Register is the default)
+    await wrapper.findAll('.tabs button').find((b) => b.text() === 'Log In')!.trigger('click')
     await wrapper.find('input[type="email"]').setValue('a@b.com')
     await wrapper.find('input[type="password"]').setValue('secret')
     await wrapper.find('form').trigger('submit')

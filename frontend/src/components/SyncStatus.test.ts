@@ -1,23 +1,15 @@
 import { mount } from '@vue/test-utils'
-import { describe, it, expect, beforeEach } from 'vitest'
-import { setActivePinia, createPinia } from 'pinia'
-import { useMatrixStore } from '@/stores/matrix'
+import { describe, it, expect } from 'vitest'
 import SyncStatus from './SyncStatus.vue'
 
 describe('SyncStatus', () => {
-  beforeEach(() => {
-    setActivePinia(createPinia())
-  })
-
-  it('hides the icon when there are no dirty notes', () => {
-    const wrapper = mount(SyncStatus)
+  it('hides the icon when not active', () => {
+    const wrapper = mount(SyncStatus, { props: { active: false } })
     expect(wrapper.find('svg').exists()).toBe(false)
   })
 
-  it('shows the icon when there are dirty notes', async () => {
-    const matrix = useMatrixStore()
-    matrix.dirtyNoteIds.add('note-1')
-    const wrapper = mount(SyncStatus)
+  it('shows the icon when active', () => {
+    const wrapper = mount(SyncStatus, { props: { active: true } })
     expect(wrapper.find('svg').exists()).toBe(true)
   })
 })
