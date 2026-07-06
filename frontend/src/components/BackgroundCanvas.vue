@@ -39,7 +39,9 @@ function draw() {
   drawArrow(ctx, w / 2, w / 2, h, stroke, stroke)
 
   // Text
-  ctx.font = "24px 'Arial Black'"
+  const fontSize = Math.max(12, Math.min(24, Math.floor(w / 50)))
+  const lineH = fontSize + 8
+  ctx.font = `${fontSize}px 'Arial Black'`
   ctx.fillStyle = palette.textColor
   const quadrantTexts = settings.flipMatrix
     ? [['IMPORTANT', 'NOT URGENT'], ['IMPORTANT', 'URGENT'], ['NOT IMPORTANT', 'NOT URGENT'], ['NOT IMPORTANT', 'URGENT']]
@@ -49,15 +51,15 @@ function draw() {
   const margin = 20
   const textAligns: CanvasTextAlign[] = ['left', 'right', 'left', 'right']
   const textPositions = [
-    { x: margin, y: 40 },
-    { x: w - margin, y: 40 },
-    { x: margin, y: h - 60 },
-    { x: w - margin, y: h - 60 },
+    { x: margin, y: fontSize + margin },
+    { x: w - margin, y: fontSize + margin },
+    { x: margin, y: h - lineH - margin },
+    { x: w - margin, y: h - lineH - margin },
   ]
   for (let i = 0; i < 4; i++) {
     ctx.textAlign = textAligns[i]!
     ctx.fillText(quadrantTexts[i]![0]!, textPositions[i]!.x, textPositions[i]!.y)
-    ctx.fillText(quadrantTexts[i]![1]!, textPositions[i]!.x, textPositions[i]!.y + 30)
+    ctx.fillText(quadrantTexts[i]![1]!, textPositions[i]!.x, textPositions[i]!.y + lineH)
   }
   ctx.textAlign = 'left'
 }

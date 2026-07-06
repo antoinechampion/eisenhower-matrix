@@ -100,6 +100,7 @@ function onFocus() {
     }"
     @input="onInput"
     @focus="onFocus"
+    @pointerdown="onFocus"
   />
 </template>
 
@@ -117,5 +118,14 @@ function onFocus() {
   touch-action: none;
   box-sizing: border-box;
   resize: none;
+}
+
+@media (max-width: 600px) {
+  .note {
+    height: max(8%, 25px);
+    width: max(15%, 90px);
+    font-size: 11px;
+    padding: 4px 4px;
+  }
 }
 </style>
