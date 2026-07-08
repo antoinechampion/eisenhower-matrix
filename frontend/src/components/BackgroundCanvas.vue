@@ -83,7 +83,6 @@ function drawArrow(ctx: CanvasRenderingContext2D, fromx: number, tox: number, fr
 
 onMounted(() => {
   draw()
-  window.addEventListener('resize', draw)
 })
 
 watch(() => [settings.palette, settings.flipMatrix], draw)

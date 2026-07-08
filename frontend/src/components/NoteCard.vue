@@ -122,7 +122,7 @@ function onFocus() {
 
 @media (max-width: 600px) {
   .note {
-    height: max(8%, 25px);
+    height: max(8%, 40px);
     width: max(15%, 90px);
     font-size: 11px;
     padding: 4px 4px;
