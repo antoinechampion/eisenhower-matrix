@@ -47,7 +47,11 @@ public class NoteMcpTools {
      */
     @McpTool(
             name = "list_notes",
-            description = "Lists all notes of the authenticated user sorted by quadrant priority (DO, SCHEDULE, DELEGATE, ELIMINATE) and distance from the high-priority origin.",
+            title = "List notes",
+            description = "Lists all notes of the authenticated user across all boards, sorted by priority: by quadrant (DO, SCHEDULE, DELEGATE, ELIMINATE), "
+                    + "then by combined importance and urgency. Each note has an id, its text, its quadrant, importance and urgency scores "
+                    + "between 0 and 1 (higher means more important / more urgent) and the title of its board. "
+                    + "Use get_note with the id to read the note's attached document.",
             annotations = @McpTool.McpAnnotations(
                     readOnlyHint = true,
                     destructiveHint = false,
@@ -74,7 +78,10 @@ public class NoteMcpTools {
      */
     @McpTool(
             name = "get_note",
-            description = "Retrieves details for a specific note, including attached HTML document content if present.",
+            title = "Get note",
+            description = "Retrieves a single note by id (as returned by list_notes): same fields as list_notes, "
+                    + "plus the content of the attached document as HTML, or null if the note has no document.",
+            generateOutputSchema = true,
             annotations = @McpTool.McpAnnotations(
                     readOnlyHint = true,
                     destructiveHint = false,
@@ -83,7 +90,7 @@ public class NoteMcpTools {
             )
     )
     public NoteDetails getNote(
-            @McpToolParam(description = "The unique identifier (UUID) of the note to retrieve")
+            @McpToolParam(description = "The note id (UUID), as returned by list_notes")
             String id
     ) {
         if (id == null || id.isBlank()) {
