@@ -79,9 +79,8 @@ public class NoteMcpTools {
     @McpTool(
             name = "get_note",
             title = "Get note",
-            description = "Retrieves a single note by id (as returned by list_notes): same fields as list_notes, "
+            description = "Retrieves details for a single note by id (as returned by list_notes): same fields as list_notes, "
                     + "plus the content of the attached document as HTML, or null if the note has no document.",
-            generateOutputSchema = true,
             annotations = @McpTool.McpAnnotations(
                     readOnlyHint = true,
                     destructiveHint = false,
