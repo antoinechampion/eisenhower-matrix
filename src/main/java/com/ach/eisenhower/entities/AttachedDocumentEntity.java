@@ -18,10 +18,15 @@ public class AttachedDocumentEntity {
     @JoinColumn(name = "note_id")
     private NoteEntity note;
 
+    @Setter
+    private byte[] content;
+
+    // @Id is on a getter (property access), so mapping annotations must be on getters too
     @Column(nullable = false)
     @Lob
-    @Getter @Setter
-    private byte[] content;
+    public byte[] getContent() {
+        return content;
+    }
 
     @Column(nullable = false)
     @Getter @Setter
