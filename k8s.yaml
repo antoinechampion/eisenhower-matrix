@@ -50,6 +50,11 @@ spec:
                 secretKeyRef:
                   name: eisenhower
                   key: jwtSigningKey
+            - name: OAUTH_SIGNING_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: eisenhower
+                  key: oauthSigningKey
             - name: MAIL_SMTP_HOST
               valueFrom:
                 secretKeyRef:
