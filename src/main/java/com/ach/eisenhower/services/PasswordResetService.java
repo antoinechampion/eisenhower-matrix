@@ -52,7 +52,12 @@ public class PasswordResetService {
         // Supersede any prior token so at most one is live per user. Flush the delete
         // before the insert, otherwise Hibernate orders the INSERT first and the unique
         // user_id constraint is violated.
-        tokens.deleteByUser(user.get());
+        if (user.get().getPasswordResetToken() != null) {
+            tokens.delete(user.get().getPasswordResetToken());
+            user.get().setPasswordResetToken(null);
+        } else {
+            tokens.deleteByUser(user.get());
+        }
         tokens.flush();
 
         var rawToken = generateRawToken();
@@ -61,6 +66,7 @@ public class PasswordResetService {
                 .user(user.get())
                 .expiryDate(new Date(System.currentTimeMillis() + TOKEN_VALIDITY_MS))
                 .build();
+        user.get().setPasswordResetToken(token);
         tokens.save(token);
 
         emailService.sendPasswordResetEmail(email, rawToken);
@@ -76,14 +82,18 @@ public class PasswordResetService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid or expired reset link"));
 
         if (token.getExpiryDate().before(new Date())) {
+            if (token.getUser() != null) {
+                token.getUser().setPasswordResetToken(null);
+            }
             tokens.delete(token);
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid or expired reset link");
         }
 
         var user = token.getUser();
         user.setPassword(encoder.encode(newPassword));
-        users.save(user);
+        user.setPasswordResetToken(null);
         tokens.delete(token);
+        users.save(user);
     }
 
     private String generateRawToken() {

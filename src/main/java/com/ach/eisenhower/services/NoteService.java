@@ -47,6 +47,13 @@ public class NoteService {
         return noteRepository.findAllByBoardId(boardId);
     }
 
+    public List<NoteEntity> listUserNotes(UUID userId) {
+        if (userId == null) {
+            return List.of();
+        }
+        return noteRepository.findAllByBoardUserId(userId);
+    }
+
     public NoteEntity updateNote(UUID userId, UUID noteId, String text, double importance, double urgency) {
         var note = getNote(userId, noteId);
         if (!userCanAccessNote(userId, note)) {

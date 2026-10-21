@@ -30,6 +30,7 @@ public class EisenhowerUserEntity implements UserDetails {
     private Set<BoardEntity> boards = new HashSet<>();
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @Getter @Setter
     private PasswordResetTokenEntity passwordResetToken;
 
     @NotEmpty

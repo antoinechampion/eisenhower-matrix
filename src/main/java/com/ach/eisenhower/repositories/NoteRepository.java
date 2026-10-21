@@ -1,6 +1,5 @@
 package com.ach.eisenhower.repositories;
 
-import com.ach.eisenhower.entities.BoardEntity;
 import com.ach.eisenhower.entities.NoteEntity;
 import org.springframework.data.repository.Repository;
 
@@ -12,6 +11,8 @@ public interface NoteRepository extends Repository<NoteEntity, UUID> {
     NoteEntity findById(UUID id) throws NoSuchElementException;
 
     List<NoteEntity> findAllByBoardId(UUID boardId);
+
+    List<NoteEntity> findAllByBoardUserId(UUID userId);
 
     void save(NoteEntity note) throws NoSuchElementException;
 
