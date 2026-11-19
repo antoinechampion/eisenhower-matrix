@@ -48,6 +48,18 @@ public class NoteEntity {
         this.importance = other;
     }
 
+    @Getter
+    @Column(length = 32, nullable = true)
+    private String flag;
+    public void setFlag(String other) {
+        if (!NoteFlag.isValid(other)) {
+            throw new IllegalArgumentException(
+                    "Flag was expected to be null, QUICK_WIN, or LONG_TERM"
+            );
+        }
+        this.flag = other;
+    }
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "board_id", nullable = false)
     @JsonIgnore

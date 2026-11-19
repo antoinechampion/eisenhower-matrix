@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref, computed } from 'vue'
-import { useMatrixStore } from '@/stores/matrix'
+import { useMatrixStore, type NoteFlag } from '@/stores/matrix'
 import { useSettingsStore } from '@/stores/settings'
 import { useRouter } from 'vue-router'
 import NoteCard from './NoteCard.vue'
@@ -67,7 +67,7 @@ function openEditor() {
   window.open(`/editor/${lastSelectedNoteId.value}`, '_blank')
 }
 
-function onNoteUpdate(noteId: string, patch: { text?: string; urgency?: number; importance?: number }) {
+function onNoteUpdate(noteId: string, patch: { text?: string; urgency?: number; importance?: number; flag?: NoteFlag }) {
   matrix.updateNote(noteId, patch)
 }
 </script>
@@ -84,6 +84,7 @@ function onNoteUpdate(noteId: string, patch: { text?: string; urgency?: number; 
         :text="note.text"
         :urgency="note.urgency"
         :importance="note.importance"
+        :flag="note.flag"
         :background="note.background ?? '#fff'"
         :border="note.border ?? '#ccc'"
         :canvasWidth="canvasWidth"

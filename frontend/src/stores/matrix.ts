@@ -1,12 +1,15 @@
 import { defineStore } from 'pinia'
 import { Boards, Notes } from '@/services/api'
 
+export type NoteFlag = 'QUICK_WIN' | 'LONG_TERM' | null
+
 export interface Note {
   id: string
   text: string
   urgency: number
   importance: number
   boardId: string
+  flag?: NoteFlag
   background?: string
   border?: string
 }
@@ -33,6 +36,7 @@ export const useMatrixStore = defineStore('matrix', {
         urgency: 0.1,
         importance: 0.1,
         boardId: this.activeBoardId,
+        flag: null,
       })
       this.notes.push(note)
     },
@@ -54,7 +58,13 @@ export const useMatrixStore = defineStore('matrix', {
       const ids = [...this.dirtyNoteIds]
       const batch = this.notes
         .filter((n) => ids.includes(n.id))
-        .map((n) => ({ id: n.id, text: n.text, urgency: n.urgency, importance: n.importance }))
+        .map((n) => ({
+          id: n.id,
+          text: n.text,
+          urgency: n.urgency,
+          importance: n.importance,
+          flag: n.flag ?? null,
+        }))
       this.dirtyNoteIds.clear()
       await Notes.batchUpdate(batch).catch(() => {
         ids.forEach((id) => this.dirtyNoteIds.add(id))

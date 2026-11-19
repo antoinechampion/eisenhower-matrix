@@ -58,4 +58,29 @@ describe('MatrixBoard', () => {
     await wrapper.find('textarea').setValue('Updated')
     expect(spy).toHaveBeenCalledWith('1', expect.objectContaining({ text: 'Updated' }))
   })
+
+  it('calls matrix.updateNote when a NoteCard flag badge is clicked', async () => {
+    const matrix = useMatrixStore()
+    vi.spyOn(matrix, 'loadNotes').mockResolvedValue()
+    matrix.notes = [
+      { id: '1', text: 'Task 1', urgency: 0.1, importance: 0.1, boardId: 'b1', flag: null, background: '#fff', border: '#000' },
+    ]
+    const spy = vi.spyOn(matrix, 'updateNote')
+    const wrapper = mount(MatrixBoard, { global: { plugins: [router] } })
+    await wrapper.find('.flag-badge').trigger('click')
+    expect(spy).toHaveBeenCalledWith('1', expect.objectContaining({ flag: 'QUICK_WIN' }))
+  })
+
+  it('renders flag emojis on NoteCards', async () => {
+    const matrix = useMatrixStore()
+    vi.spyOn(matrix, 'loadNotes').mockResolvedValue()
+    matrix.notes = [
+      { id: '1', text: 'Quick', urgency: 0.1, importance: 0.1, boardId: 'b1', flag: 'QUICK_WIN', background: '#fff', border: '#000' },
+      { id: '2', text: 'Long', urgency: 0.5, importance: 0.5, boardId: 'b1', flag: 'LONG_TERM', background: '#fff', border: '#000' },
+    ]
+    const wrapper = mount(MatrixBoard, { global: { plugins: [router] } })
+    const badges = wrapper.findAll('.flag-badge')
+    expect(badges[0]!.text()).toBe('⚡')
+    expect(badges[1]!.text()).toBe('🐌')
+  })
 })
