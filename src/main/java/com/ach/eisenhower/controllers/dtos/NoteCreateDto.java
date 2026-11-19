@@ -17,4 +17,7 @@ public class NoteCreateDto {
     @Setter
     @ValidateUUID
     private String boardId;
+    @Getter
+    @Setter
+    private String flag;
 }

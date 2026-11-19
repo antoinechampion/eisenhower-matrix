@@ -12,6 +12,7 @@ import org.springframework.test.web.servlet.ResultMatcher;
 
 import static org.hamcrest.CoreMatchers.anything;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -174,6 +175,240 @@ public class NoteRestTest extends EisenhowerBaseTest {
                         .secure(true))
                 .andExpect(status().isOk())
                 .andExpectAll(resultMatchers);
+    }
+
+    @Test
+    public void testCreateNoteWithFlag() throws Exception {
+        var board = createUserWithBoard();
+        var token = userTestingUtils.getAccessTokenForUser(board.getUser());
+
+        // Create with QUICK_WIN flag
+        var createQuickWinResult = mvc.perform(post("/api/note/")
+                        .content("{ \"boardId\": \"" + board.getId() + "\", \"text\": \"quick win note\", \"importance\": 0.8, \"urgency\": 0.2, \"flag\": \"QUICK_WIN\"}")
+                        .cookie(new Cookie("token", token))
+                        .secure(true)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("id", anything()))
+                .andExpect(jsonPath("flag", is("QUICK_WIN")))
+                .andExpect(jsonPath("importance", is(0.8)))
+                .andExpect(jsonPath("urgency", is(0.2)))
+                .andReturn();
+
+        String quickWinId = com.jayway.jsonpath.JsonPath.read(createQuickWinResult.getResponse().getContentAsString(), "$.id");
+
+        mvc.perform(get("/api/note/" + quickWinId)
+                        .cookie(new Cookie("token", token))
+                        .secure(true))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("flag", is("QUICK_WIN")))
+                .andExpect(jsonPath("importance", is(0.8)))
+                .andExpect(jsonPath("urgency", is(0.2)));
+
+        // Create with LONG_TERM flag
+        var createLongTermResult = mvc.perform(post("/api/note/")
+                        .content("{ \"boardId\": \"" + board.getId() + "\", \"text\": \"long term note\", \"importance\": 0.3, \"urgency\": 0.7, \"flag\": \"LONG_TERM\"}")
+                        .cookie(new Cookie("token", token))
+                        .secure(true)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("flag", is("LONG_TERM")))
+                .andExpect(jsonPath("importance", is(0.3)))
+                .andExpect(jsonPath("urgency", is(0.7)))
+                .andReturn();
+
+        String longTermId = com.jayway.jsonpath.JsonPath.read(createLongTermResult.getResponse().getContentAsString(), "$.id");
+
+        mvc.perform(get("/api/note/" + longTermId)
+                        .cookie(new Cookie("token", token))
+                        .secure(true))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("flag", is("LONG_TERM")))
+                .andExpect(jsonPath("importance", is(0.3)))
+                .andExpect(jsonPath("urgency", is(0.7)));
+
+        // Create without flag (null)
+        var createNullResult = mvc.perform(post("/api/note/")
+                        .content("{ \"boardId\": \"" + board.getId() + "\", \"text\": \"unflagged note\", \"importance\": 0.5, \"urgency\": 0.5}")
+                        .cookie(new Cookie("token", token))
+                        .secure(true)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("flag", nullValue()))
+                .andReturn();
+
+        String nullFlagId = com.jayway.jsonpath.JsonPath.read(createNullResult.getResponse().getContentAsString(), "$.id");
+
+        mvc.perform(get("/api/note/" + nullFlagId)
+                        .cookie(new Cookie("token", token))
+                        .secure(true))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("flag", nullValue()));
+
+        // Check list endpoint returns all notes with their respective flags
+        mvc.perform(get("/api/note/list/?boardId=" + board.getId())
+                        .cookie(new Cookie("token", token))
+                        .secure(true))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[?(@.id == '" + quickWinId + "')].flag").value("QUICK_WIN"))
+                .andExpect(jsonPath("$[?(@.id == '" + longTermId + "')].flag").value("LONG_TERM"))
+                .andExpect(jsonPath("$[?(@.id == '" + nullFlagId + "')].flag").value(hasItem(nullValue())));
+    }
+
+    @Test
+    public void testUserCannotCreateNoteWithInvalidFlag() throws Exception {
+        var board = createUserWithBoard();
+        mvc.perform(post("/api/note/")
+                        .content("{ \"boardId\": \"" + board.getId() + "\", \"text\": \"test note\", \"importance\": 0.1, \"urgency\": 0.1, \"flag\": \"INVALID_FLAG\"}")
+                        .cookie(new Cookie("token", userTestingUtils.getAccessTokenForUser(board.getUser())))
+                        .secure(true)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void testUpdateNoteFlag() throws Exception {
+        var board = createUserWithBoard();
+        var token = userTestingUtils.getAccessTokenForUser(board.getUser());
+        var note = noteService.createNote(board.getUser().getId(), board.getId(), "initial note", 0.2, 0.2);
+
+        // Update with QUICK_WIN flag
+        mvc.perform(put("/api/note/" + note.getId())
+                        .content("{ \"text\": \"updated text\", \"importance\": 0.5, \"urgency\": 0.5, \"flag\": \"QUICK_WIN\"}")
+                        .cookie(new Cookie("token", token))
+                        .secure(true)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("flag", is("QUICK_WIN")));
+
+        mvc.perform(get("/api/note/" + note.getId())
+                        .cookie(new Cookie("token", token))
+                        .secure(true))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("flag", is("QUICK_WIN")));
+
+        // Update with LONG_TERM flag
+        mvc.perform(put("/api/note/" + note.getId())
+                        .content("{ \"text\": \"updated text 2\", \"importance\": 0.6, \"urgency\": 0.6, \"flag\": \"LONG_TERM\"}")
+                        .cookie(new Cookie("token", token))
+                        .secure(true)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("flag", is("LONG_TERM")));
+
+        // Clear flag with null
+        mvc.perform(put("/api/note/" + note.getId())
+                        .content("{ \"text\": \"cleared flag text\", \"importance\": 0.6, \"urgency\": 0.6, \"flag\": null}")
+                        .cookie(new Cookie("token", token))
+                        .secure(true)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("flag", nullValue()));
+
+        mvc.perform(get("/api/note/" + note.getId())
+                        .cookie(new Cookie("token", token))
+                        .secure(true))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("flag", nullValue()));
+    }
+
+    @Test
+    public void testUserCannotUpdateNoteWithInvalidFlag() throws Exception {
+        var board = createUserWithBoard();
+        var note = noteService.createNote(board.getUser().getId(), board.getId(), "test", 0.1, 0.1);
+
+        mvc.perform(put("/api/note/" + note.getId())
+                        .content("{ \"text\": \"updated text\", \"importance\": 0.5, \"urgency\": 0.5, \"flag\": \"INVALID\"}")
+                        .cookie(new Cookie("token", userTestingUtils.getAccessTokenForUser(board.getUser())))
+                        .secure(true)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void testUpdateNotesInBatchWithFlags() throws Exception {
+        var board = createUserWithBoard();
+        var token = userTestingUtils.getAccessTokenForUser(board.getUser());
+
+        var note1 = noteService.createNote(board.getUser().getId(), board.getId(), "note 1", 0.1, 0.1, null);
+        var note2 = noteService.createNote(board.getUser().getId(), board.getId(), "note 2", 0.2, 0.2, "QUICK_WIN");
+        var note3 = noteService.createNote(board.getUser().getId(), board.getId(), "note 3", 0.3, 0.3, "LONG_TERM");
+
+        // Batch update: note1 -> LONG_TERM, note2 -> null (clear), note3 -> QUICK_WIN
+        String batchJson = "["
+                + "{ \"id\": \"" + note1.getId() + "\", \"text\": \"note 1 updated\", \"importance\": 0.1, \"urgency\": 0.1, \"flag\": \"LONG_TERM\" },"
+                + "{ \"id\": \"" + note2.getId() + "\", \"text\": \"note 2 updated\", \"importance\": 0.2, \"urgency\": 0.2, \"flag\": null },"
+                + "{ \"id\": \"" + note3.getId() + "\", \"text\": \"note 3 updated\", \"importance\": 0.3, \"urgency\": 0.3, \"flag\": \"QUICK_WIN\" }"
+                + "]";
+
+        mvc.perform(put("/api/note/batch/update")
+                        .content(batchJson)
+                        .cookie(new Cookie("token", token))
+                        .secure(true)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+
+        mvc.perform(get("/api/note/" + note1.getId())
+                        .cookie(new Cookie("token", token))
+                        .secure(true))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("flag", is("LONG_TERM")));
+
+        mvc.perform(get("/api/note/" + note2.getId())
+                        .cookie(new Cookie("token", token))
+                        .secure(true))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("flag", nullValue()));
+
+        mvc.perform(get("/api/note/" + note3.getId())
+                        .cookie(new Cookie("token", token))
+                        .secure(true))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("flag", is("QUICK_WIN")));
+    }
+
+    @Test
+    public void testFiveArgUpdateNotePreservesFlag() {
+        var board = createUserWithBoard();
+        var note = noteService.createNote(board.getUser().getId(), board.getId(), "initial", 0.1, 0.1, "QUICK_WIN");
+        org.junit.jupiter.api.Assertions.assertEquals("QUICK_WIN", note.getFlag());
+
+        var updated = noteService.updateNote(board.getUser().getId(), note.getId(), "updated text", 0.4, 0.4);
+        org.junit.jupiter.api.Assertions.assertEquals("QUICK_WIN", updated.getFlag());
+        org.junit.jupiter.api.Assertions.assertEquals("updated text", updated.getText());
+
+        var fetched = noteService.getNote(board.getUser().getId(), note.getId());
+        org.junit.jupiter.api.Assertions.assertEquals("QUICK_WIN", fetched.getFlag());
+    }
+
+    @Test
+    public void testUpdateNotesInBatchWithInvalidFlag() throws Exception {
+        var board = createUserWithBoard();
+        var token = userTestingUtils.getAccessTokenForUser(board.getUser());
+
+        var note1 = noteService.createNote(board.getUser().getId(), board.getId(), "note 1", 0.1, 0.1, "QUICK_WIN");
+        var note2 = noteService.createNote(board.getUser().getId(), board.getId(), "note 2", 0.2, 0.2, "LONG_TERM");
+
+        // Batch update where note2 has INVALID_FLAG
+        String batchJson = "["
+                + "{ \"id\": \"" + note1.getId() + "\", \"text\": \"note 1 updated\", \"importance\": 0.5, \"urgency\": 0.5, \"flag\": null },"
+                + "{ \"id\": \"" + note2.getId() + "\", \"text\": \"note 2 updated\", \"importance\": 0.6, \"urgency\": 0.6, \"flag\": \"INVALID_FLAG\" }"
+                + "]";
+
+        mvc.perform(put("/api/note/batch/update")
+                        .content(batchJson)
+                        .cookie(new Cookie("token", token))
+                        .secure(true)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
+
+        // Note 2 should remain untouched with its original text and flag
+        mvc.perform(get("/api/note/" + note2.getId())
+                        .cookie(new Cookie("token", token))
+                        .secure(true))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("text", is("note 2")))
+                .andExpect(jsonPath("flag", is("LONG_TERM")));
     }
 
     private BoardEntity createUserWithBoard() {

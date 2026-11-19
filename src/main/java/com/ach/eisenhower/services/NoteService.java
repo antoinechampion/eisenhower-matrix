@@ -1,6 +1,7 @@
 package com.ach.eisenhower.services;
 
 import com.ach.eisenhower.entities.NoteEntity;
+import com.ach.eisenhower.entities.NoteFlag;
 import com.ach.eisenhower.repositories.NoteRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
@@ -20,11 +21,15 @@ public class NoteService {
     }
 
     public NoteEntity createNote(UUID userId, UUID boardId, String text, double importance, double urgency) {
+        return createNote(userId, boardId, text, importance, urgency, null);
+    }
+
+    public NoteEntity createNote(UUID userId, UUID boardId, String text, double importance, double urgency, String flag) {
         var board = boardService.getBoard(userId, boardId);
-        validateNoteFieldsOrThrow(text, importance, urgency);
+        validateNoteFieldsOrThrow(text, importance, urgency, flag);
 
         var note = NoteEntity.builder()
-                .text(text).importance(importance).urgency(urgency).board(board)
+                .text(text).importance(importance).urgency(urgency).board(board).flag(flag)
                 .build();
         noteRepository.save(note);
         return note;
@@ -56,13 +61,19 @@ public class NoteService {
 
     public NoteEntity updateNote(UUID userId, UUID noteId, String text, double importance, double urgency) {
         var note = getNote(userId, noteId);
+        return updateNote(userId, noteId, text, importance, urgency, note.getFlag());
+    }
+
+    public NoteEntity updateNote(UUID userId, UUID noteId, String text, double importance, double urgency, String flag) {
+        var note = getNote(userId, noteId);
         if (!userCanAccessNote(userId, note)) {
             throw new EisenhowerServiceException(HttpStatus.UNAUTHORIZED, "The user does not have the right to list the notes of this board");
         }
-        validateNoteFieldsOrThrow(text, importance, urgency);
+        validateNoteFieldsOrThrow(text, importance, urgency, flag);
         note.setText(text);
         note.setImportance(importance);
         note.setUrgency(urgency);
+        note.setFlag(flag);
         noteRepository.save(note);
         return note;
     }
@@ -79,15 +90,18 @@ public class NoteService {
         return note.getBoard().getUser().getId().equals(userId);
     }
 
-    private void validateNoteFieldsOrThrow(String text, double importance, double urgency) {
+    private void validateNoteFieldsOrThrow(String text, double importance, double urgency, String flag) {
         if (urgency > 1.0 || urgency < 0.0) {
             throw new EisenhowerServiceException("Urgency is out of bounds [0, 1]");
         }
         if (importance > 1.0 || importance < 0.0) {
             throw new EisenhowerServiceException("Importance is out of bounds [0, 1]");
         }
-        if (text.length() > 2048) {
+        if (text != null && text.length() > 2048) {
             throw new EisenhowerServiceException("Note text is above allowed limit of 2048 characters");
+        }
+        if (!NoteFlag.isValid(flag)) {
+            throw new EisenhowerServiceException("Flag must be QUICK_WIN, LONG_TERM, or null");
         }
     }
 }

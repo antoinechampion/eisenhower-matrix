@@ -13,4 +13,7 @@ public class NoteUpdateDto {
     @Getter
     @Setter
     private double importance;
+    @Getter
+    @Setter
+    private String flag;
 }

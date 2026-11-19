@@ -34,6 +34,7 @@ src/main/resources/static/
 
 application-dev.properties
 .idea/workspace.xml
+.junie
 
 HELP.md
 target/

@@ -39,8 +39,9 @@ public class NoteController {
                 userId,
                 UUID.fromString(dto.getBoardId()),
                 dto.getText(),
+                dto.getImportance(),
                 dto.getUrgency(),
-                dto.getImportance()
+                dto.getFlag()
         );
     }
 
@@ -73,7 +74,8 @@ public class NoteController {
                 UUID.fromString(id),
                 dto.getText(),
                 dto.getImportance(),
-                dto.getUrgency()
+                dto.getUrgency(),
+                dto.getFlag()
         );
     }
 
@@ -101,7 +103,8 @@ public class NoteController {
                         UUID.fromString(dtoElement.getId()),
                         dtoElement.getText(),
                         dtoElement.getImportance(),
-                        dtoElement.getUrgency()
+                        dtoElement.getUrgency(),
+                        dtoElement.getFlag()
                 );
             } catch (HttpStatusCodeException e) {
                 exception = e;

@@ -8,18 +8,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18b7bc88-7b86-4ad7-9188-b8601b5ba4ae" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/services/DatabaseCleanupService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/ach/eisenhower/DatabaseCleanupTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/ServerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/ServerApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/entities/BoardEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/entities/BoardEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/entities/EisenhowerUserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/entities/EisenhowerUserEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/repositories/EisenhowerUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/repositories/EisenhowerUserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/MatrixBoard.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/MatrixBoard.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/MatrixBoard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/MatrixBoard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/NoteCard.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/NoteCard.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/NoteCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/NoteCard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/stores/matrix.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/stores/matrix.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/controllers/NoteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/controllers/NoteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/controllers/dtos/NoteCreateDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/controllers/dtos/NoteCreateDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/controllers/dtos/NoteUpdateDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/controllers/dtos/NoteUpdateDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/entities/NoteEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/entities/NoteEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/services/NoteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/services/NoteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/ach/eisenhower/NoteRestTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ach/eisenhower/NoteRestTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="291" />
+    <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -28,9 +39,13 @@
         <option value="CSS File" />
         <option value="JavaScript File" />
         <option value="Class" />
+        <option value="HTTP Request" />
       </list>
     </option>
   </component>
+  <component name="GHAISettings">{
+  &quot;automaticallyGenerateSummary&quot;: false
+}</component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -46,25 +61,83 @@
     &quot;accountId&quot;: &quot;66ed748b-a7cc-40d6-88bb-f49f6d57b689&quot;
   }
 }</component>
+  <component name="HttpClientOnboardingState">{
+  &quot;isOnboardingCommentShown&quot;: true
+}</component>
   <component name="JavaAutoRunManager">
     <enabled-run-configurations>
       <run-configuration type="JUnit" name="DatabaseCleanupTest" />
-      <run-configuration type="JUnit" name="DatabaseCleanupTest.testInactiveUsersAreDeleted" />
     </enabled-run-configurations>
   </component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="userSettingsFile" value="$USER_HOME$/.m2/settings-no-proxy.xml" />
-      </MavenGeneralSettings>
-    </option>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000000168014889" />
+      <entry key="S2" value="1.0529641525991" />
+      <entry key="S5" value="2.0730043578848414" />
+      <entry key="S10" value="3.928890307559824" />
+      <entry key="S30" value="6.740536875333551" />
+      <entry key="S60" value="8.682499248091013" />
+      <entry key="M2" value="19.182553075013313" />
+      <entry key="M5" value="58.59393100349821" />
+      <entry key="M10" value="96.05780456175364" />
+      <entry key="M15" value="130.90832412778616" />
+      <entry key="M30" value="262.4628093638147" />
+      <entry key="H1" value="475.91047740036817" />
+      <entry key="H2" value="731.1870943668928" />
+      <entry key="H4" value="1093.286600489577" />
+      <entry key="D1" value="2123.8313907416505" />
+      <entry key="W1" value="2487.2898323939316" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="2.7090865148793778E-288" />
+      <entry key="S10" value="1.8660710108463313E-144" />
+      <entry key="S30" value="1.7957104160120454E-48" />
+      <entry key="S60" value="1.8715536260432006E-24" />
+      <entry key="M2" value="1.92853734359524E-12" />
+      <entry key="M5" value="3.1215776081342845E-5" />
+      <entry key="M10" value="0.007900349590296006" />
+      <entry key="M15" value="0.04997839860048129" />
+      <entry key="M30" value="0.31818839339272786" />
+      <entry key="H1" value="0.857867125761694" />
+      <entry key="H2" value="1.6134855796380339" />
+      <entry key="H4" value="2.426630865138332" />
+      <entry key="D1" value="3.654549529049342" />
+      <entry key="W1" value="3.9480244210518887" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.0068484821977815215" />
+      <entry key="MS500" value="0.3690786178038362" />
+      <entry key="S2" value="0.832026763565154" />
+      <entry key="S5" value="1.97507522839167" />
+      <entry key="S10" value="3.8760786323202634" />
+      <entry key="S30" value="6.721315791295992" />
+      <entry key="S60" value="8.672528521924546" />
+      <entry key="M2" value="19.17712881269177" />
+      <entry key="M5" value="58.591218636107705" />
+      <entry key="M10" value="96.06405512213567" />
+      <entry key="M15" value="130.95699942961102" />
+      <entry key="M30" value="262.7799130978587" />
+      <entry key="H1" value="476.7674218903107" />
+      <entry key="H2" value="732.7998214936711" />
+      <entry key="H4" value="1095.712536590443" />
+      <entry key="D1" value="2127.485641221482" />
+      <entry key="W1" value="2491.2378043911067" />
+    </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -80,31 +153,53 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "HTTP Request.test | #1.executor": "Run",
+    "JUnit.AttachedDocumentTest.executor": "Run",
+    "JUnit.BoardRestTest.executor": "Run",
     "JUnit.DatabaseCleanupTest.executor": "Run",
     "JUnit.DatabaseCleanupTest.testInactiveUsersAreDeleted.executor": "Run",
+    "JUnit.NoteRestTest.executor": "Run",
+    "JUnit.OAuthSecurityTest.executor": "Run",
+    "JUnit.PasswordResetTest.executor": "Run",
+    "JUnit.UserRestTest.executor": "Run",
     "JUnit.java in eisenhower.executor": "Run",
+    "Maven.eisenhower [com.github.eirslett:frontend-maven-plugin:1.15.0:yarn].executor": "Run",
+    "Maven.eisenhower [org.springframework.boot:spring-boot-maven-plugin:3.0.0:run].executor": "Run",
+    "Maven.eisenhower [test].executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "Spring Boot.ServerApplication.executor": "Run",
-    "git-widget-placeholder": "main",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "add__mcp__server",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/antoi/Documents/Prog/Java/eisenhower-matrix",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "yarn",
-    "settings.editor.selected.configurable": "configurable.group.junie",
+    "settings.editor.selected.configurable": "ml.llm.LLMConfigurable",
+    "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "C:\\Users\\antoi\\Documents\\Prog\\Java\\eisenhower-matrix\\frontend\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.ach.eisenhower.services" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\antoi\Documents\Prog\Java\eisenhower-matrix" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\antoi\Documents\Prog\Java\eisenhower-matrix\src\main\resources" />
@@ -133,8 +228,29 @@
         <option value="SpringBootApplicationConfigurationType" />
       </set>
     </option>
+    <option name="configurationStatuses">
+      <map>
+        <entry key="HttpClient.HttpRequestRunConfigurationType">
+          <value>
+            <map>
+              <entry key="test | #1" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
+        <entry key="SpringBootApplicationConfigurationType">
+          <value>
+            <map>
+              <entry key="ServerApplication" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
-  <component name="RunManager" selected="JUnit.DatabaseCleanupTest.testInactiveUsersAreDeleted">
+  <component name="RunManager" selected="Spring Boot.ServerApplication">
+    <configuration name="test | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/frontend/src/components/test.http" executionIdentifier="#1" runType="Run single request">
+      <method v="2" />
+    </configuration>
     <configuration name="AttachedDocumentTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="eisenhower" />
       <extension name="coverage">
@@ -145,26 +261,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.ach.eisenhower" />
       <option name="MAIN_CLASS_NAME" value="com.ach.eisenhower.AttachedDocumentTest" />
-      <option name="METHOD_NAME" value="testCreateAttachedDocumentWithGuestAccess" />
       <option name="TEST_OBJECT" value="class" />
-      <dir value="$PROJECT_DIR$/src/test/java" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AttachedDocumentTest.testCreateAttachedDocumentWithGuestAccess" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="eisenhower" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ach.eisenhower.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.ach.eisenhower" />
-      <option name="MAIN_CLASS_NAME" value="com.ach.eisenhower.AttachedDocumentTest" />
-      <option name="METHOD_NAME" value="testCreateAttachedDocumentWithGuestAccess" />
-      <option name="TEST_OBJECT" value="method" />
-      <dir value="$PROJECT_DIR$/src/test/java" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -184,7 +281,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DatabaseCleanupTest.testInactiveUsersAreDeleted" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="OAuthSecurityTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="eisenhower" />
       <extension name="coverage">
         <pattern>
@@ -193,30 +290,61 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.ach.eisenhower" />
-      <option name="MAIN_CLASS_NAME" value="com.ach.eisenhower.DatabaseCleanupTest" />
-      <option name="METHOD_NAME" value="testInactiveUsersAreDeleted" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="com.ach.eisenhower.OAuthSecurityTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="java in eisenhower" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PasswordResetTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="eisenhower" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/src/test/java" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ach.eisenhower.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ach.eisenhower" />
+      <option name="MAIN_CLASS_NAME" value="com.ach.eisenhower.PasswordResetTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ServerApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="eisenhower-matrix" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ach.eisenhower.ServerApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="eisenhower [spring-boot:run]" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="cmdOptions" />
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="spring-boot:run" />
+              </list>
+            </option>
+            <option name="multimoduleDir" />
+            <option name="pomFileName" value="pom.xml" />
+            <option name="profilesMap">
+              <map>
+                <entry key="dev" value="true" />
+              </map>
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
     </configuration>
     <configuration name="ServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <option name="ACTIVE_PROFILES" value="dev" />
+      <option name="ACTIVE_PROFILES" value="local" />
       <option name="ALTERNATIVE_JRE_PATH" value="openjdk-17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <module name="eisenhower" />
@@ -225,21 +353,30 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="HTTP Request.test | #1" />
+      <item itemvalue="JUnit.AttachedDocumentTest" />
+      <item itemvalue="JUnit.DatabaseCleanupTest" />
+      <item itemvalue="JUnit.OAuthSecurityTest" />
+      <item itemvalue="JUnit.PasswordResetTest" />
+      <item itemvalue="Maven.eisenhower [spring-boot:run]" />
+      <item itemvalue="Spring Boot.ServerApplication" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DatabaseCleanupTest.testInactiveUsersAreDeleted" />
+        <item itemvalue="JUnit.PasswordResetTest" />
+        <item itemvalue="JUnit.OAuthSecurityTest" />
         <item itemvalue="JUnit.DatabaseCleanupTest" />
-        <item itemvalue="JUnit.java in eisenhower" />
-        <item itemvalue="JUnit.AttachedDocumentTest.testCreateAttachedDocumentWithGuestAccess" />
         <item itemvalue="JUnit.AttachedDocumentTest" />
+        <item itemvalue="HTTP Request.test | #1" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.26094.121" />
-        <option value="bundled-js-predefined-d6986cc7102b-b26f3e71634d-JavaScript-IU-251.26094.121" />
+        <option value="bundled-jdk-30f59d01ecdd-a203e0a19954-intellij.indexing.shared.core-IU-262.10968.63" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.10968.63" />
       </set>
     </attachedChunks>
   </component>
@@ -292,6 +429,10 @@
       <workItem from="1750515986904" duration="75000" />
       <workItem from="1750516264594" duration="65000" />
       <workItem from="1750516637340" duration="619000" />
+      <workItem from="1783339659477" duration="964000" />
+      <workItem from="1783342131591" duration="832000" />
+      <workItem from="1783343019402" duration="104000" />
+      <workItem from="1783495447224" duration="2565000" />
     </task>
     <servers />
   </component>

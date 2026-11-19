@@ -2,7 +2,7 @@
 
 This is an open-source web application to create and manage Eisenhower matrices, also known as Priority matrices or Important-Urgent matrices. See it live on *[eisenhowermatrix.net](https://eisenhowermatrix.net)*.
 
-Powered by Spring Boot and Web Components.
+Powered by Spring Boot and Vue.
 
 Matrix board             |  Tasks memo editor
 :-------------------------:|:-------------------------:
