@@ -4,12 +4,13 @@ import { useSettingsStore } from '@/stores/settings'
 
 const settings = useSettingsStore()
 const canvas = ref<HTMLCanvasElement | null>(null)
+const props = defineProps<{ width: number; height: number }>()
 
 function draw() {
   const c = canvas.value
   if (!c) return
-  c.width = window.innerWidth
-  c.height = window.innerHeight
+  c.width = props.width
+  c.height = props.height
   const ctx = c.getContext('2d')!
   const palette = settings.activePalette
   const w = c.width
@@ -85,7 +86,7 @@ onMounted(() => {
   draw()
 })
 
-watch(() => [settings.palette, settings.flipMatrix], draw)
+watch(() => [props.width, props.height, settings.palette, settings.flipMatrix], draw)
 
 defineExpose({ canvas })
 </script>

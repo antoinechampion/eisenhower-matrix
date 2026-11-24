@@ -16,15 +16,27 @@ const settingsRef = ref<InstanceType<typeof MatrixSettings> | null>(null)
 const lastSelectedNoteId = ref<string | null>(null)
 let saveInterval: ReturnType<typeof setInterval>
 
-const canvasWidth = ref(window.innerWidth)
-const canvasHeight = ref(window.innerHeight)
+const matrixContainer = ref<HTMLDivElement | null>(null)
+const canvasWidth = ref(0)
+const canvasHeight = ref(0)
+let resizeObserver: ResizeObserver | null = null
 
-function onResize() {
-  canvasWidth.value = window.innerWidth
-  canvasHeight.value = window.innerHeight
+function updateBoardSize() {
+  const bounds = matrixContainer.value?.getBoundingClientRect()
+  if (!bounds) return
+  canvasWidth.value = Math.round(bounds.width)
+  canvasHeight.value = Math.round(bounds.height)
 }
 
 onMounted(async () => {
+  updateBoardSize()
+  if (typeof ResizeObserver !== 'undefined' && matrixContainer.value) {
+    resizeObserver = new ResizeObserver(updateBoardSize)
+    resizeObserver.observe(matrixContainer.value)
+  }
+  window.addEventListener('resize', updateBoardSize)
+  window.visualViewport?.addEventListener('resize', updateBoardSize)
+
   await matrix.loadNotes()
   // Assign palette colors to notes
   for (const note of matrix.notes) {
@@ -35,12 +47,13 @@ onMounted(async () => {
     }
   }
   saveInterval = setInterval(() => matrix.batchSave(), 1000)
-  window.addEventListener('resize', onResize)
 })
 
 onUnmounted(() => {
   clearInterval(saveInterval)
-  window.removeEventListener('resize', onResize)
+  resizeObserver?.disconnect()
+  window.removeEventListener('resize', updateBoardSize)
+  window.visualViewport?.removeEventListener('resize', updateBoardSize)
 })
 
 async function addNote() {
@@ -74,9 +87,9 @@ function onNoteUpdate(noteId: string, patch: { text?: string; urgency?: number; 
 
 <template>
   <div class="matrix-wrapper" @click.self="lastSelectedNoteId = null">
-    <BackgroundCanvas />
+    <BackgroundCanvas :width="canvasWidth" :height="canvasHeight" />
 
-    <div class="matrix-container">
+    <div ref="matrixContainer" class="matrix-container">
       <NoteCard
         v-for="note in matrix.notes"
         :key="note.id"
@@ -120,6 +133,7 @@ function onNoteUpdate(noteId: string, patch: { text?: string; urgency?: number; 
   position: relative;
   width: 100%;
   height: 100vh;
+  height: 100dvh;
   overflow: hidden;
 }
 .matrix-container {
@@ -127,18 +141,22 @@ function onNoteUpdate(noteId: string, patch: { text?: string; urgency?: number; 
   left: 0;
   top: 0;
   width: 100%;
-  height: 100%;
+  bottom: 0;
   z-index: 1;
 }
 .buttons-bar {
   position: absolute;
   z-index: 1000;
-  bottom: 20px;
+  pointer-events: none;
+  bottom: calc(10px + env(safe-area-inset-bottom, 0px));
   right: 50%;
   transform: translate(50%, 0);
   display: flex;
   align-items: center;
   gap: 4px;
+}
+.buttons-bar > * {
+  pointer-events: auto;
 }
 .icon {
   fill: #1c6ca144;

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import type { ResizeEvent, DragEvent as InteractDragEvent } from '@interactjs/types'
 import type { NoteFlag } from '@/stores/matrix'
 
@@ -29,7 +29,21 @@ let interactInstance: ReturnType<typeof import('interactjs')['default']> | null 
 const x = ref(props.urgency * props.canvasWidth)
 const y = ref(props.importance * props.canvasHeight)
 
+function clampPosition(position: number, boardSize: number, noteSize: number) {
+  return Math.min(Math.max(position, 0), Math.max(0, boardSize - noteSize))
+}
+
+function repositionFromSavedCoordinates() {
+  const noteWidth = el.value?.offsetWidth ?? 0
+  const noteHeight = el.value?.offsetHeight ?? 0
+  x.value = clampPosition(props.urgency * props.canvasWidth, props.canvasWidth, noteWidth)
+  y.value = clampPosition(props.importance * props.canvasHeight, props.canvasHeight, noteHeight)
+}
+
+watch(() => [props.canvasWidth, props.canvasHeight], repositionFromSavedCoordinates, { flush: 'post' })
+
 onMounted(async () => {
+  repositionFromSavedCoordinates()
   const Interact = (await import('interactjs')).default
   if (!el.value) return
 
@@ -70,8 +84,8 @@ onMounted(async () => {
       listeners: {
         move(event: InteractDragEvent) {
           const target = event.target as HTMLElement
-          const nx = (parseFloat(target.dataset.x ?? '0') + event.dx)
-          const ny = (parseFloat(target.dataset.y ?? '0') + event.dy)
+          const nx = clampPosition(parseFloat(target.dataset.x ?? '0') + event.dx, props.canvasWidth, target.offsetWidth)
+          const ny = clampPosition(parseFloat(target.dataset.y ?? '0') + event.dy, props.canvasHeight, target.offsetHeight)
           target.style.transform = `translate(${nx}px, ${ny}px)`
           target.dataset.x = String(nx)
           target.dataset.y = String(ny)
@@ -148,6 +162,7 @@ const flagTitle = computed(() => {
     <textarea
       class="note-textarea"
       :value="text"
+      style="touch-action: none"
       @input="onInput"
       @focus="onFocus"
     />

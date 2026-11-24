@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { setActivePinia, createPinia } from 'pinia'
 import BackgroundCanvas from './BackgroundCanvas.vue'
 
@@ -26,15 +26,36 @@ describe('BackgroundCanvas', () => {
     setActivePinia(createPinia())
   })
 
+  afterEach(() => {
+    vi.restoreAllMocks()
+  })
+
   it('renders a canvas element', () => {
     mockCanvasContext()
-    const wrapper = mount(BackgroundCanvas)
+    const wrapper = mount(BackgroundCanvas, { props: { width: 320, height: 480 } })
     expect(wrapper.find('canvas').exists()).toBe(true)
   })
 
   it('calls getContext on the canvas on mount', () => {
     const spy = mockCanvasContext()
-    mount(BackgroundCanvas)
+    mount(BackgroundCanvas, { props: { width: 320, height: 480 } })
     expect(HTMLCanvasElement.prototype.getContext).toHaveBeenCalledWith('2d')
+  })
+
+  it('resizes and redraws when the measured board dimensions change', async () => {
+    const ctx = mockCanvasContext()
+    const wrapper = mount(BackgroundCanvas, { props: { width: 320, height: 480 } })
+    const canvas = wrapper.find('canvas').element
+
+    expect(canvas.width).toBe(320)
+    expect(canvas.height).toBe(480)
+    const initialDrawCalls = ctx.fillRect.mock.calls.length
+
+    await wrapper.setProps({ width: 600, height: 400 })
+
+    expect(canvas.width).toBe(600)
+    expect(canvas.height).toBe(400)
+    expect(ctx.fillRect).toHaveBeenCalledTimes(initialDrawCalls * 2)
+    wrapper.unmount()
   })
 })

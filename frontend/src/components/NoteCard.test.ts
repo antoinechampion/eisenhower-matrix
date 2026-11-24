@@ -44,10 +44,42 @@ describe('NoteCard', () => {
     expect(wrapper.emitted('update')![0]![0]).toMatchObject({ text: 'New text' })
   })
 
+  it('disables native touch panning on the editable drag surface', () => {
+    const wrapper = mount(NoteCard, { props: defaultProps })
+    const textarea = wrapper.find('.note-textarea')
+
+    const textareaStyle = (wrapper.vm as any).$?.subTree.children?.[0]?.props.style
+    expect(textareaStyle['touch-action']).toBe('none')
+    expect((textarea.element as HTMLTextAreaElement).readOnly).toBe(false)
+  })
+
   it('applies correct transform style from urgency/importance props', () => {
     const wrapper = mount(NoteCard, { props: defaultProps })
     const style = wrapper.find('.note-card').attributes('style')
     expect(style).toContain('translate(200px, 400px)')
+  })
+
+  it('repositions from saved normalized coordinates when the board is resized', async () => {
+    const wrapper = mount(NoteCard, { props: defaultProps })
+
+    await wrapper.setProps({ canvasWidth: 500, canvasHeight: 400 })
+
+    expect(wrapper.find('.note-card').attributes('style')).toContain('translate(100px, 200px)')
+    expect(wrapper.emitted('update')).toBeFalsy()
+  })
+
+  it('keeps the visible note within resized board bounds without changing saved coordinates', async () => {
+    const wrapper = mount(NoteCard, {
+      props: { ...defaultProps, urgency: 0.9, importance: 0.95 },
+    })
+    const card = wrapper.find('.note-card').element as HTMLElement
+    Object.defineProperty(card, 'offsetWidth', { configurable: true, value: 150 })
+    Object.defineProperty(card, 'offsetHeight', { configurable: true, value: 75 })
+
+    await wrapper.setProps({ canvasWidth: 320, canvasHeight: 240 })
+
+    expect(card.style.transform).toBe('translate(170px, 165px)')
+    expect(wrapper.emitted('update')).toBeFalsy()
   })
 
   it('renders no emoji when flag is null or undefined', () => {
@@ -107,6 +139,37 @@ describe('NoteCard', () => {
     expect(interactInstance.draggable).toHaveBeenCalledWith(
       expect.objectContaining({ ignoreFrom: '.flag-badge' }),
     )
+  })
+
+  it('updates and saves every consecutive drag move in normalized board coordinates', async () => {
+    let dragMoveListener: ((event: any) => void) | undefined
+    interactInstance.draggable.mockImplementationOnce((options: any) => {
+      dragMoveListener = options?.listeners?.move
+      return interactInstance
+    })
+
+    const wrapper = mount(NoteCard, { props: defaultProps })
+    await flushPromises()
+    const card = wrapper.find('.note-card').element as HTMLElement
+
+    dragMoveListener!({ target: card, dx: 10, dy: 20 })
+    dragMoveListener!({ target: card, dx: 15, dy: -5 })
+
+    expect(card.dataset.x).toBe('225')
+    expect(card.dataset.y).toBe('415')
+    expect(wrapper.emitted('update')).toEqual([
+      [{ urgency: 0.21, importance: 0.525 }],
+      [{ urgency: 0.225, importance: 0.51875 }],
+    ])
+  })
+
+  it('unsets the interactable when the note is unmounted', async () => {
+    const wrapper = mount(NoteCard, { props: defaultProps })
+    await flushPromises()
+
+    wrapper.unmount()
+
+    expect(interactInstance.unset).toHaveBeenCalledOnce()
   })
 
   it('emits focus on card pointerdown but isolates badge pointerdown', async () => {

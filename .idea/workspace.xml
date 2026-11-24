@@ -8,20 +8,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18b7bc88-7b86-4ad7-9188-b8601b5ba4ae" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/BackgroundCanvas.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/BackgroundCanvas.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/BackgroundCanvas.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/BackgroundCanvas.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/MatrixBoard.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/MatrixBoard.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/MatrixBoard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/MatrixBoard.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/NoteCard.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/NoteCard.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/NoteCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/NoteCard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/stores/matrix.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/stores/matrix.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/controllers/NoteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/controllers/NoteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/controllers/dtos/NoteCreateDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/controllers/dtos/NoteCreateDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/controllers/dtos/NoteUpdateDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/controllers/dtos/NoteUpdateDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/entities/NoteEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/entities/NoteEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/services/NoteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ach/eisenhower/services/NoteService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/ach/eisenhower/NoteRestTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ach/eisenhower/NoteRestTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,11 +58,6 @@
   <component name="HttpClientOnboardingState">{
   &quot;isOnboardingCommentShown&quot;: true
 }</component>
-  <component name="JavaAutoRunManager">
-    <enabled-run-configurations>
-      <run-configuration type="JUnit" name="DatabaseCleanupTest" />
-    </enabled-run-configurations>
-  </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -82,61 +71,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0000000168014889" />
-      <entry key="S2" value="1.0529641525991" />
-      <entry key="S5" value="2.0730043578848414" />
-      <entry key="S10" value="3.928890307559824" />
-      <entry key="S30" value="6.740536875333551" />
-      <entry key="S60" value="8.682499248091013" />
-      <entry key="M2" value="19.182553075013313" />
-      <entry key="M5" value="58.59393100349821" />
-      <entry key="M10" value="96.05780456175364" />
-      <entry key="M15" value="130.90832412778616" />
-      <entry key="M30" value="262.4628093638147" />
-      <entry key="H1" value="475.91047740036817" />
-      <entry key="H2" value="731.1870943668928" />
-      <entry key="H4" value="1093.286600489577" />
-      <entry key="D1" value="2123.8313907416505" />
-      <entry key="W1" value="2487.2898323939316" />
+      <entry key="MS100" value="1.769552901901419" />
+      <entry key="MS500" value="4.657728129981111" />
+      <entry key="S2" value="6.848517637138169" />
+      <entry key="S5" value="7.504739031231966" />
+      <entry key="S10" value="7.7461349326787055" />
+      <entry key="S30" value="7.913950550259179" />
+      <entry key="S60" value="7.968722342782194" />
+      <entry key="M2" value="8.967796180402086" />
+      <entry key="M5" value="22.69305228875569" />
+      <entry key="M10" value="44.96446797705957" />
+      <entry key="M15" value="61.88570358472874" />
+      <entry key="M30" value="124.5873517153282" />
+      <entry key="H1" value="294.93097991862606" />
+      <entry key="H2" value="582.5004965751741" />
+      <entry key="H4" value="998.487702680822" />
+      <entry key="D1" value="2179.8523067211504" />
+      <entry key="W1" value="2609.74238271633" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="2.7090865148793778E-288" />
-      <entry key="S10" value="1.8660710108463313E-144" />
-      <entry key="S30" value="1.7957104160120454E-48" />
-      <entry key="S60" value="1.8715536260432006E-24" />
-      <entry key="M2" value="1.92853734359524E-12" />
-      <entry key="M5" value="3.1215776081342845E-5" />
-      <entry key="M10" value="0.007900349590296006" />
-      <entry key="M15" value="0.04997839860048129" />
-      <entry key="M30" value="0.31818839339272786" />
-      <entry key="H1" value="0.857867125761694" />
-      <entry key="H2" value="1.6134855796380339" />
-      <entry key="H4" value="2.426630865138332" />
-      <entry key="D1" value="3.654549529049342" />
-      <entry key="W1" value="3.9480244210518887" />
+      <entry key="S2" value="8.244210797543561E-99" />
+      <entry key="S5" value="5.8406291967347336E-40" />
+      <entry key="S10" value="2.416739372943375E-20" />
+      <entry key="S30" value="2.891189818684466E-7" />
+      <entry key="S60" value="5.376978536952203E-4" />
+      <entry key="M2" value="0.023188312870903605" />
+      <entry key="M5" value="0.22189650463752253" />
+      <entry key="M10" value="0.47574786808005143" />
+      <entry key="M15" value="0.6347278471887091" />
+      <entry key="M30" value="0.9980363285585924" />
+      <entry key="H1" value="1.640284941863891" />
+      <entry key="H2" value="2.6081953939249356" />
+      <entry key="H4" value="3.7071769171452726" />
+      <entry key="D1" value="5.478460322177241" />
+      <entry key="W1" value="5.920908579414688" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.0068484821977815215" />
-      <entry key="MS500" value="0.3690786178038362" />
-      <entry key="S2" value="0.832026763565154" />
-      <entry key="S5" value="1.97507522839167" />
-      <entry key="S10" value="3.8760786323202634" />
-      <entry key="S30" value="6.721315791295992" />
-      <entry key="S60" value="8.672528521924546" />
-      <entry key="M2" value="19.17712881269177" />
-      <entry key="M5" value="58.591218636107705" />
-      <entry key="M10" value="96.06405512213567" />
-      <entry key="M15" value="130.95699942961102" />
-      <entry key="M30" value="262.7799130978587" />
-      <entry key="H1" value="476.7674218903107" />
-      <entry key="H2" value="732.7998214936711" />
-      <entry key="H4" value="1095.712536590443" />
-      <entry key="D1" value="2127.485641221482" />
-      <entry key="W1" value="2491.2378043911067" />
+      <entry key="MS100" value="1.7094366031542776" />
+      <entry key="MS500" value="4.565632469971285" />
+      <entry key="S2" value="6.810528529449337" />
+      <entry key="S5" value="7.487840920819147" />
+      <entry key="S10" value="7.737377093744664" />
+      <entry key="S30" value="7.910960423200278" />
+      <entry key="S60" value="7.96774320295336" />
+      <entry key="M2" value="8.989934688756634" />
+      <entry key="M5" value="22.91341270347545" />
+      <entry key="M10" value="45.4386817386876" />
+      <entry key="M15" value="62.51905113172812" />
+      <entry key="M30" value="125.58420107671543" />
+      <entry key="H1" value="296.5701961968882" />
+      <entry key="H2" value="585.1077822015623" />
+      <entry key="H4" value="1002.1940854503666" />
+      <entry key="D1" value="2185.3304347564563" />
+      <entry key="W1" value="2615.6632327156217" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -163,8 +152,10 @@
     "JUnit.PasswordResetTest.executor": "Run",
     "JUnit.UserRestTest.executor": "Run",
     "JUnit.java in eisenhower.executor": "Run",
+    "Maven.Mobile LAN.executor": "Run",
     "Maven.eisenhower [com.github.eirslett:frontend-maven-plugin:1.15.0:yarn].executor": "Run",
     "Maven.eisenhower [org.springframework.boot:spring-boot-maven-plugin:3.0.0:run].executor": "Run",
+    "Maven.eisenhower [spring-boot:run].executor": "Run",
     "Maven.eisenhower [test].executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
@@ -175,10 +166,11 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.Mobile Testing.executor": "Debug",
     "Spring Boot.ServerApplication.executor": "Run",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "add__mcp__server",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
@@ -230,24 +222,17 @@
     </option>
     <option name="configurationStatuses">
       <map>
-        <entry key="HttpClient.HttpRequestRunConfigurationType">
-          <value>
-            <map>
-              <entry key="test | #1" value="STOPPED" />
-            </map>
-          </value>
-        </entry>
         <entry key="SpringBootApplicationConfigurationType">
           <value>
             <map>
-              <entry key="ServerApplication" value="STOPPED" />
+              <entry key="Mobile Testing" value="STOPPED" />
             </map>
           </value>
         </entry>
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ServerApplication">
+  <component name="RunManager" selected="Spring Boot.Mobile Testing">
     <configuration name="test | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/frontend/src/components/test.http" executionIdentifier="#1" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -343,6 +328,17 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
+    <configuration name="Mobile Testing" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="ACTIVE_PROFILES" value="local" />
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <module name="eisenhower" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ach.eisenhower.ServerApplication" />
+      <option name="VM_PARAMETERS" value="-Dserver.address=0.0.0.0" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="ACTIVE_PROFILES" value="local" />
       <option name="ALTERNATIVE_JRE_PATH" value="openjdk-17" />
@@ -361,6 +357,7 @@
       <item itemvalue="JUnit.PasswordResetTest" />
       <item itemvalue="Maven.eisenhower [spring-boot:run]" />
       <item itemvalue="Spring Boot.ServerApplication" />
+      <item itemvalue="Spring Boot.Mobile Testing" />
     </list>
     <recent_temporary>
       <list>
@@ -375,8 +372,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-a203e0a19954-intellij.indexing.shared.core-IU-262.10968.63" />
-        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.10968.63" />
+        <option value="bundled-jdk-30f59d01ecdd-ac68fc9d2b05-intellij.indexing.shared.core-IU-263.7307.200" />
+        <option value="bundled-js-predefined-d6986cc7102b-56aff7b04f6f-JavaScript-IU-263.7307.200" />
       </set>
     </attachedChunks>
   </component>
